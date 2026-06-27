@@ -124,6 +124,12 @@ const zh: Dict = {
       ],
     },
   },
+  playground: {
+    eyebrow: "游乐场",
+    title: "来玩一会儿",
+    subtitle: "用代码做的小玩具。它会对点击和光标作出反应。",
+    hint: "点击：切换形态 · 光标：打散",
+  },
   connect: {
     eyebrow: "联系",
     title: "一起做点东西，或只是打个招呼",

@@ -127,6 +127,12 @@ const en: Dict = {
       ],
     },
   },
+  playground: {
+    eyebrow: "Playground",
+    title: "Take a moment to play",
+    subtitle: "A little toy made of code. It reacts to your clicks and cursor.",
+    hint: "Click: change shape · Cursor: scatter",
+  },
   connect: {
     eyebrow: "Connect",
     title: "Build together, or just say hi",

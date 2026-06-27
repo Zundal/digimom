@@ -3,6 +3,7 @@ import About from "../sections/About";
 import Experience from "../sections/Experience";
 import Projects from "../sections/Projects";
 import Writing from "../sections/Writing";
+import Playground from "../sections/Playground";
 import Connect from "../sections/Connect";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Experience />
       <Projects />
       <Writing />
+      <Playground />
       <Connect />
     </>
   );

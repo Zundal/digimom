@@ -127,6 +127,12 @@ const ja: Dict = {
       ],
     },
   },
+  playground: {
+    eyebrow: "プレイグラウンド",
+    title: "ちょっと遊んでみて",
+    subtitle: "コードで作った小さなおもちゃ。クリックとカーソルに反応します。",
+    hint: "クリック: 形を変える · カーソル: 散らす",
+  },
   connect: {
     eyebrow: "つながる",
     title: "一緒に作る、ただ挨拶でも",

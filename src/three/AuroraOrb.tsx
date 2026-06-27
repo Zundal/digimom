@@ -1,5 +1,5 @@
-import { useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useEffect, useMemo, useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 const vertex = /* glsl */ `
@@ -98,6 +98,14 @@ void main() {
 export default function AuroraOrb({ reducedMotion = false }: { reducedMotion?: boolean }) {
   const matRef = useRef<THREE.ShaderMaterial>(null);
   const groupRef = useRef<THREE.Group>(null);
+  const gl = useThree((s) => s.gl);
+
+  // Interaction state (refs so events don't trigger re-renders).
+  const pulse = useRef(0); // click ripple, decays each frame
+  const hover = useRef(0); // 0..1 pointer-is-over
+  const prevPointer = useRef(new THREE.Vector2());
+  const speed = useRef(0); // smoothed pointer velocity
+  const ampRef = useRef(0.34);
 
   const uniforms = useMemo(
     () => ({
@@ -110,12 +118,45 @@ export default function AuroraOrb({ reducedMotion = false }: { reducedMotion?: b
     []
   );
 
+  // Click anywhere on the canvas → ripple pulse. Pointer over → swell.
+  useEffect(() => {
+    const el = gl.domElement;
+    const onDown = () => (pulse.current = 1);
+    const onEnter = () => (hover.current = 1);
+    const onLeave = () => (hover.current = 0);
+    el.addEventListener("pointerdown", onDown);
+    el.addEventListener("pointerenter", onEnter);
+    el.addEventListener("pointerleave", onLeave);
+    return () => {
+      el.removeEventListener("pointerdown", onDown);
+      el.removeEventListener("pointerenter", onEnter);
+      el.removeEventListener("pointerleave", onLeave);
+    };
+  }, [gl]);
+
   useFrame((state, delta) => {
-    if (matRef.current && !reducedMotion) {
-      matRef.current.uniforms.uTime.value += delta;
+    // Pointer velocity (how fast the cursor sweeps the orb).
+    const dx = state.pointer.x - prevPointer.current.x;
+    const dy = state.pointer.y - prevPointer.current.y;
+    prevPointer.current.set(state.pointer.x, state.pointer.y);
+    const inst = Math.min(1, Math.hypot(dx, dy) * 7);
+    speed.current += (inst - speed.current) * 0.1;
+
+    // Click ripple decays smoothly.
+    pulse.current *= 0.93;
+
+    if (matRef.current) {
+      if (!reducedMotion) matRef.current.uniforms.uTime.value += delta;
+      // Displacement amplitude reacts to clicks, sweeps, and hover.
+      const target = reducedMotion
+        ? 0.34
+        : 0.34 + pulse.current * 0.5 + speed.current * 0.35 + hover.current * 0.07;
+      ampRef.current += (target - ampRef.current) * 0.12;
+      matRef.current.uniforms.uAmp.value = ampRef.current;
     }
+
     if (groupRef.current) {
-      const spin = reducedMotion ? 0 : delta * 0.12;
+      const spin = reducedMotion ? 0 : delta * (0.12 + pulse.current * 0.6);
       groupRef.current.rotation.y += spin;
       // Gentle parallax toward the pointer.
       const px = state.pointer.x * 0.25;
@@ -123,6 +164,9 @@ export default function AuroraOrb({ reducedMotion = false }: { reducedMotion?: b
       groupRef.current.rotation.x +=
         (py - groupRef.current.rotation.x) * 0.04;
       groupRef.current.position.x += (px - groupRef.current.position.x) * 0.04;
+      // Brief swell on click.
+      const s = 1 + pulse.current * 0.06;
+      groupRef.current.scale.setScalar(s);
     }
   });
 

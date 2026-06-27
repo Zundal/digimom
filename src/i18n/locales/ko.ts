@@ -125,6 +125,12 @@ const ko = {
       ],
     },
   },
+  playground: {
+    eyebrow: "플레이그라운드",
+    title: "잠깐 가지고 놀아보세요",
+    subtitle: "코드로 만든 작은 장난감. 클릭과 커서에 반응합니다.",
+    hint: "클릭: 형태 변경 · 커서: 흩뜨리기",
+  },
   connect: {
     eyebrow: "연결",
     title: "함께 만들거나, 그냥 인사하거나",
