@@ -18,11 +18,14 @@ single page with a multilingual (한국어 · English · 日本語 · 中文) in
 
 ## Develop
 
+This project uses **[Bun](https://bun.sh)** as the package manager and runner.
+
 ```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # type-check + production build to dist/
-npm run preview  # preview the production build
+bun install
+bun run dev       # http://localhost:5173
+bun run build     # type-check + production build to dist/
+bun run preview   # preview the production build
+bun run test:e2e  # Playwright e2e (desktop + mobile)
 ```
 
 ## Make it yours
@@ -36,9 +39,14 @@ To add a blog post: add an entry to `POSTS` in `site.ts`, then add a matching
 
 ## Deploy
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and
-publishes to GitHub Pages. In the repo settings, set **Settings → Pages →
-Source → GitHub Actions** once.
+The site is a static build hosted on **GitHub Pages** (`gh-pages` branch).
+To publish the latest version:
+
+```bash
+bun run deploy   # builds, then pushes dist/ to the gh-pages branch
+```
+
+Pages is configured to serve from `gh-pages` → `/`. Live at the URL above.
 
 ---
 

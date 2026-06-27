@@ -19,7 +19,7 @@ export default defineConfig({
   ],
   // Dev server uses base "/" (see vite.config.ts), so URLs resolve cleanly.
   webServer: {
-    command: `npx vite --port ${PORT} --strictPort`,
+    command: `bunx vite --port ${PORT} --strictPort`,
     url: `http://localhost:${PORT}/`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
