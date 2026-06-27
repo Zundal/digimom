@@ -27,6 +27,9 @@ const KeyboardScene = lazy(() => import("../three/KeyboardScene"));
 
 const asset = (p: string) => `${import.meta.env.BASE_URL}${p}`;
 
+// Note scroll-speed multipliers (faster notes, song pitch unchanged).
+const SPEEDS = [1, 1.5, 2, 3];
+
 // Screen Orientation API is partially typed / unsupported on some browsers
 // (notably iOS), so guard both calls and swallow failures.
 type LockableOrientation = ScreenOrientation & {
@@ -57,6 +60,7 @@ export default function Resonance() {
   const wrapRef = useRef<HTMLDivElement>(null);
 
   const [immersive, setImmersive] = useState(false);
+  const [speed, setSpeed] = useState(1);
   const [score, setScore] = useState(0);
   const [combo, setCombo] = useState(0);
   const [best, setBest] = useState(0);
@@ -288,6 +292,7 @@ export default function Resonance() {
               getTime={engine.getTime}
               bus={bus}
               active={active}
+              speed={speed}
             />
           </Suspense>
         </div>
@@ -425,6 +430,25 @@ export default function Resonance() {
             <span className="hidden font-mono text-[0.65rem] tracking-wider text-muted sm:inline">
               {t("resonance.howto")}
             </span>
+            {/* Note speed (배속) — scrolls notes faster without changing pitch */}
+            <div className="hud-chip flex shrink-0 items-center gap-0.5 rounded-full p-0.5">
+              <span className="px-1.5 font-mono text-[0.6rem] tracking-wide text-faint">
+                {t("resonance.speed")}
+              </span>
+              {SPEEDS.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setSpeed(s)}
+                  className="rounded-full px-2 py-0.5 font-mono text-[0.7rem] font-bold transition-colors"
+                  style={{
+                    background: speed === s ? "var(--color-aqua)" : "transparent",
+                    color: speed === s ? "#0b0b12" : "var(--color-muted)",
+                  }}
+                >
+                  {s}×
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">

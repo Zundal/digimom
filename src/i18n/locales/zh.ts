@@ -145,6 +145,7 @@ const zh: Dict = {
     combo: "连击",
     howto: "D · F · J · K 或点击",
     rotate: "请将设备旋转为横屏",
+    speed: "速度",
     judge: { perfect: "完美", good: "不错", miss: "失误" },
     tracks: {
       cloudAbove: { title: "구름 위로" },

@@ -146,6 +146,7 @@ const ko = {
     combo: "콤보",
     howto: "D · F · J · K 또는 터치",
     rotate: "기기를 가로로 돌려주세요",
+    speed: "배속",
     judge: { perfect: "퍼펙트", good: "굿", miss: "미스" },
     tracks: {
       cloudAbove: { title: "구름 위로" },

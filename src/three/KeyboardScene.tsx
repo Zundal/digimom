@@ -13,7 +13,6 @@ import {
   TILE_Y,
   TRAVEL,
   laneX,
-  tileZ,
   type GameBus,
 } from "../lib/game";
 
@@ -109,6 +108,7 @@ function Stage({
   chart,
   getTime,
   bus,
+  speed,
 }: {
   active: boolean;
   reduced: boolean;
@@ -117,6 +117,7 @@ function Stage({
   chart: React.MutableRefObject<Note[]>;
   getTime: () => number;
   bus: GameBus;
+  speed: number;
 }) {
   const keys = useMemo(() => buildKeys(), []);
   const sprite = useMemo(() => radialTexture(), []);
@@ -264,16 +265,18 @@ function Stage({
     ) {
       scanStart.current++;
     }
+    // Higher speed → shorter lead → notes cover the same distance faster.
+    const lead = LEAD / speed;
     let slot = 0;
     for (let k = scanStart.current; k < notes.length && slot < TILE_POOL; k++) {
       const note = notes[k];
       const ttl = note.time - now; // time to hit-line
-      if (ttl > LEAD) break;
+      if (ttl > lead) break;
       if (note.hit) continue; // struck → vanished
       const tile = tileRefs.current[slot++];
       if (!tile) continue;
       tile.visible = true;
-      tile.position.set(laneX(note.lane), TILE_Y, tileZ(ttl));
+      tile.position.set(laneX(note.lane), TILE_Y, HIT_Z - (ttl / lead) * TRAVEL);
       const mat = tile.material as THREE.MeshStandardMaterial;
       if (note.judged) {
         // missed note slides past, dimmed
@@ -568,6 +571,7 @@ export default function KeyboardScene({
   getTime,
   bus,
   active,
+  speed,
 }: {
   analyserRef: React.MutableRefObject<AnalyserNode | null>;
   dataRef: React.MutableRefObject<Uint8Array>;
@@ -575,6 +579,7 @@ export default function KeyboardScene({
   getTime: () => number;
   bus: GameBus;
   active: boolean;
+  speed: number;
 }) {
   const reduced = usePrefersReducedMotion();
 
@@ -597,6 +602,7 @@ export default function KeyboardScene({
         chart={chartRef}
         getTime={getTime}
         bus={bus}
+        speed={speed}
       />
     </Canvas>
   );

@@ -14,6 +14,11 @@ export type Note = {
 export const LANES = 4;
 const BAND_HZ = [110, 520, 1800, 5200]; // one centre freq per lane
 
+// Let the song's intro play before any notes drop, so it doesn't start
+// the instant you press play. Notes within this window are discarded; the
+// keyboard still reacts to the spectrum during the lead-in.
+export const INTRO_SKIP = 6.5; // seconds
+
 export async function buildChart(buffer: AudioBuffer): Promise<Note[]> {
   const notes: Note[] = [];
 
@@ -62,7 +67,7 @@ export async function buildChart(buffer: AudioBuffer): Promise<Note[]> {
         v > env[k - 1]
       ) {
         const t = (k * hop) / sr;
-        if (t - last > minGap) {
+        if (t >= INTRO_SKIP && t - last > minGap) {
           notes.push({ time: t, lane, judged: false, hit: false });
           last = t;
         }

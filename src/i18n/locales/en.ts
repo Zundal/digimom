@@ -148,6 +148,7 @@ const en: Dict = {
     combo: "Combo",
     howto: "D · F · J · K or tap",
     rotate: "Rotate your device to landscape",
+    speed: "Speed",
     judge: { perfect: "Perfect", good: "Good", miss: "Miss" },
     tracks: {
       cloudAbove: { title: "구름 위로" },

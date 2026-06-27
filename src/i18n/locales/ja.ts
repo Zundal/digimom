@@ -148,6 +148,7 @@ const ja: Dict = {
     combo: "コンボ",
     howto: "D・F・J・K またはタップ",
     rotate: "端末を横向きにしてください",
+    speed: "速度",
     judge: { perfect: "パーフェクト", good: "グッド", miss: "ミス" },
     tracks: {
       cloudAbove: { title: "구름 위로" },
