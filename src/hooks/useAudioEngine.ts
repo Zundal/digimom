@@ -125,8 +125,11 @@ export function useAudioEngine(): AudioEngine {
         setProgress(0);
         setCurrentId(id);
         chartRef.current = cacheRef.current.get(id) ?? [];
-        void analyze(id, url);
+        // Defer analysis so playback buffers first and the offline renders
+        // don't starve it (still finishes well within the intro lead-in).
+        window.setTimeout(() => void analyze(id, url), 600);
       }
+      audio.playbackRate = 1; // never let the song play at game speed
       void audio
         .play()
         .then(() => setPlaying(true))

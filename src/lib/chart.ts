@@ -19,17 +19,18 @@ const BAND_HZ = [110, 520, 1800, 5200]; // one centre freq per lane
 // keyboard still reacts to the spectrum during the lead-in.
 export const INTRO_SKIP = 6.5; // seconds
 
+// Analyse at a low sample rate (nyquist still clears the top band): keeps the
+// offline renders cheap so they can't starve live audio on mobile.
+const ANALYSIS_RATE = 12000;
+
 export async function buildChart(buffer: AudioBuffer): Promise<Note[]> {
   const notes: Note[] = [];
+  const length = Math.max(1, Math.ceil(buffer.duration * ANALYSIS_RATE));
 
   for (let lane = 0; lane < LANES; lane++) {
-    const offline = new OfflineAudioContext(
-      1,
-      buffer.length,
-      buffer.sampleRate
-    );
+    const offline = new OfflineAudioContext(1, length, ANALYSIS_RATE);
     const src = offline.createBufferSource();
-    src.buffer = buffer;
+    src.buffer = buffer; // resampled to ANALYSIS_RATE by the source node
     const filter = offline.createBiquadFilter();
     filter.type = "bandpass";
     filter.frequency.value = BAND_HZ[lane];
@@ -42,9 +43,9 @@ export async function buildChart(buffer: AudioBuffer): Promise<Note[]> {
     const ch = rendered.getChannelData(0);
     const sr = rendered.sampleRate;
 
-    // RMS envelope.
-    const win = 1024;
-    const hop = 512;
+    // RMS envelope (window sized for ~21 ms at the analysis rate).
+    const win = 256;
+    const hop = 128;
     const env: number[] = [];
     for (let i = 0; i + win < ch.length; i += hop) {
       let s = 0;
