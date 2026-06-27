@@ -34,6 +34,20 @@ export function useAudioEngine(): AudioEngine {
   const [analyzing, setAnalyzing] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  // The AudioContext alone — enough to play the hit synth before any song
+  // has been loaded (the first lane tap is itself the unlocking gesture).
+  const ensureCtx = useCallback(() => {
+    if (!ctxRef.current) {
+      const Ctor =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext })
+          .webkitAudioContext;
+      ctxRef.current = new Ctor();
+    }
+    if (ctxRef.current.state === "suspended") void ctxRef.current.resume();
+    return ctxRef.current;
+  }, []);
+
   const ensureGraph = useCallback(() => {
     if (!audioRef.current) {
       const a = new Audio();
@@ -48,23 +62,18 @@ export function useAudioEngine(): AudioEngine {
       });
       audioRef.current = a;
     }
-    if (!ctxRef.current) {
-      const Ctor =
-        window.AudioContext ||
-        (window as unknown as { webkitAudioContext: typeof AudioContext })
-          .webkitAudioContext;
-      const ctx = new Ctor();
+    const ctx = ensureCtx();
+    if (!analyserRef.current) {
       const source = ctx.createMediaElementSource(audioRef.current);
       const analyser = ctx.createAnalyser();
       analyser.fftSize = 4096;
       analyser.smoothingTimeConstant = 0.82;
       source.connect(analyser);
       analyser.connect(ctx.destination);
-      ctxRef.current = ctx;
       analyserRef.current = analyser;
       dataRef.current = new Uint8Array(analyser.frequencyBinCount);
     }
-  }, []);
+  }, [ensureCtx]);
 
   // Decode + beatmap a track once, then cache it.
   const analyze = useCallback(async (id: string, url: string) => {
@@ -132,23 +141,39 @@ export function useAudioEngine(): AudioEngine {
 
   const getTime = useCallback(() => audioRef.current?.currentTime ?? 0, []);
 
-  // Short plucked blip so every keypress / tap sounds like playing.
-  const pluck = useCallback((lane: number) => {
-    const ctx = ctxRef.current;
-    if (!ctx) return;
-    const now = ctx.currentTime;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = "triangle";
-    osc.frequency.value = PLUCK_HZ[lane % PLUCK_HZ.length];
-    gain.gain.setValueAtTime(0.0001, now);
-    gain.gain.exponentialRampToValueAtTime(0.22, now + 0.008);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start(now);
-    osc.stop(now + 0.55);
-  }, []);
+  // Punchy press sound so every keypress / tap gives clear feedback, even
+  // before a song is playing. A bright transient click + a tonal body.
+  const pluck = useCallback(
+    (lane: number) => {
+      const ctx = ensureCtx();
+      const now = ctx.currentTime;
+      const freq = PLUCK_HZ[lane % PLUCK_HZ.length];
+
+      // Tonal body.
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(freq, now);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.34, now + 0.005);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.34);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.36);
+
+      // Crisp attack click for a tactile "pressed it" feel.
+      const click = ctx.createOscillator();
+      const cg = ctx.createGain();
+      click.type = "square";
+      click.frequency.setValueAtTime(freq * 3, now);
+      cg.gain.setValueAtTime(0.16, now);
+      cg.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+      click.connect(cg).connect(ctx.destination);
+      click.start(now);
+      click.stop(now + 0.05);
+    },
+    [ensureCtx]
+  );
 
   useEffect(() => {
     return () => {

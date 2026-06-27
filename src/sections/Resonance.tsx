@@ -306,7 +306,9 @@ export default function Resonance() {
                 e.preventDefault();
                 hit(l);
               }}
-              className="group relative flex-1 border-r border-white/5 last:border-r-0"
+              // touch-none lets every finger fire its own pointerdown, so
+              // chords (multiple lanes at once) register on mobile.
+              className="group relative flex-1 touch-none select-none border-r border-white/5 last:border-r-0"
             >
               <span
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-150 group-active:opacity-100"
