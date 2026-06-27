@@ -11,7 +11,7 @@
     "lint": "tsc -b --noEmit",
     "test:e2e": "playwright test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -b gh-pages -t true"
+    "deploy": "gh-pages -d dist -b gh-pages -t"
   },
   "dependencies": {
     "@react-three/drei": "^9.122.0",
