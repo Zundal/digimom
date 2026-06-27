@@ -110,9 +110,9 @@ export type Post = {
 };
 
 export const POSTS: Post[] = [
-  { id: "sensation", date: "2026-06-28", readingMin: 7, tag: "mind" },
-  { id: "perception", date: "2026-06-28", readingMin: 7, tag: "mind" },
   { id: "cognition", date: "2026-06-28", readingMin: 7, tag: "mind" },
+  { id: "perception", date: "2026-06-28", readingMin: 7, tag: "mind" },
+  { id: "sensation", date: "2026-06-28", readingMin: 7, tag: "mind" },
   { id: "hello", date: "2026-06-27", readingMin: 3, tag: "intro" },
   { id: "buildingWithThree", date: "2026-06-20", readingMin: 6, tag: "craft" },
   { id: "shippingFast", date: "2026-05-30", readingMin: 4, tag: "process" },
