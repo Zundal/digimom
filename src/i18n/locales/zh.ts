@@ -125,9 +125,10 @@ const zh: Dict = {
     },
   },
   playground: {
-    eyebrow: "游乐场",
-    title: "来玩一会儿",
-    subtitle: "用代码做的小玩具。它会对点击和光标作出反应。",
+    eyebrow: "对待数据的态度",
+    title: "让数据可见、可感",
+    subtitle:
+      "正如成千上万的点汇聚成形，我追求把数据处理得能被看见、被感知，而不只是被存储。",
     hint: "点击：切换形态 · 光标：打散",
   },
   connect: {

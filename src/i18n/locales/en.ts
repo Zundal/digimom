@@ -128,9 +128,10 @@ const en: Dict = {
     },
   },
   playground: {
-    eyebrow: "Playground",
-    title: "Take a moment to play",
-    subtitle: "A little toy made of code. It reacts to your clicks and cursor.",
+    eyebrow: "How I work with data",
+    title: "Making data visible and tangible",
+    subtitle:
+      "Just as thousands of points converge into a shape, I aim to handle data so it can be seen and felt — not merely stored.",
     hint: "Click: change shape · Cursor: scatter",
   },
   connect: {
