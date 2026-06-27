@@ -78,3 +78,18 @@ export async function buildChart(buffer: AudioBuffer): Promise<Note[]> {
   notes.sort((a, b) => a.time - b.time);
   return notes;
 }
+
+// Thin a chart by enforcing a global minimum gap between notes — used on
+// touch devices so the song doesn't throw a wall of notes that's hard to
+// hit with fingers.
+export function thinChart(notes: Note[], minGap: number): Note[] {
+  const out: Note[] = [];
+  let last = -Infinity;
+  for (const n of notes) {
+    if (n.time - last >= minGap) {
+      out.push(n);
+      last = n.time;
+    }
+  }
+  return out;
+}

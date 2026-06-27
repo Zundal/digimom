@@ -1,5 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { buildChart, type Note } from "../lib/chart";
+import { buildChart, thinChart, type Note } from "../lib/chart";
+
+// Touch devices get a thinned beatmap so it's playable with fingers.
+const IS_TOUCH =
+  typeof window !== "undefined" &&
+  (window.matchMedia?.("(pointer: coarse)").matches ||
+    navigator.maxTouchPoints > 0);
+const TOUCH_MIN_GAP = 0.3; // seconds between notes on mobile
 
 // Drives a single <audio> element through a Web Audio analyser so the 3D
 // keyboard can read the live spectrum, and pre-analyses each track offline into
@@ -86,7 +93,8 @@ export function useAudioEngine(): AudioEngine {
       const res = await fetch(url);
       const buf = await res.arrayBuffer();
       const audioBuf = await ctxRef.current!.decodeAudioData(buf);
-      const chart = await buildChart(audioBuf);
+      let chart = await buildChart(audioBuf);
+      if (IS_TOUCH) chart = thinChart(chart, TOUCH_MIN_GAP);
       cacheRef.current.set(id, chart);
       // Only apply if the user is still on this track.
       if (audioRef.current && audioRef.current.src.endsWith(url))

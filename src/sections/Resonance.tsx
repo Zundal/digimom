@@ -299,10 +299,11 @@ export default function Resonance() {
 
         {/* Contrast scrims so overlay text stays readable over the scene */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/85 via-ink/30 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-ink via-ink/85 to-transparent sm:h-60" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-ink via-ink/85 to-transparent sm:h-52" />
 
-        {/* Touch lanes (also catch mouse clicks) */}
-        <div className="absolute inset-x-0 bottom-[9rem] top-16 flex sm:bottom-40">
+        {/* Touch lanes (also catch mouse clicks) — kept large so taps anywhere
+            in a column register, not just a thin strip. */}
+        <div className="absolute inset-x-0 bottom-[7rem] top-2 flex">
           {Array.from({ length: LANES }, (_, l) => (
             <button
               key={l}
@@ -411,7 +412,7 @@ export default function Resonance() {
         )}
 
         {/* Controls */}
-        <div className="absolute inset-x-0 bottom-0 z-10 space-y-2.5 p-3 sm:p-5">
+        <div className="absolute inset-x-0 bottom-0 z-10 space-y-2 p-3 sm:px-5 sm:py-4">
           {/* Progress */}
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-line/70">
             <div

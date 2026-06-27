@@ -12,7 +12,6 @@ export default function Footer() {
           <span className="aurora-text font-display text-base font-bold tracking-tight">
             {SITE.handle}
           </span>
-          <p className="mt-1 text-xs text-faint">{t("footer.built")}</p>
         </div>
 
         <div className="flex items-center gap-5">
