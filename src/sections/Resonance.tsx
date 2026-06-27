@@ -260,7 +260,7 @@ export default function Resonance() {
   return (
     <section id="resonance" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
       <SectionHeading
-        index="06"
+        index="04"
         eyebrow={t("resonance.eyebrow")}
         title={t("resonance.title")}
         subtitle={t("resonance.subtitle")}

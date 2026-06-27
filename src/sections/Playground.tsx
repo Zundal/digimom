@@ -13,7 +13,7 @@ export default function Playground() {
   return (
     <section id="playground" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
       <SectionHeading
-        index="05"
+        index="03"
         eyebrow={t("playground.eyebrow")}
         title={t("playground.title")}
         subtitle={t("playground.subtitle")}

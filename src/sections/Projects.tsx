@@ -89,7 +89,7 @@ export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
       <SectionHeading
-        index="03"
+        index="02"
         eyebrow={t("projects.eyebrow")}
         title={t("projects.title")}
         subtitle={t("projects.subtitle")}

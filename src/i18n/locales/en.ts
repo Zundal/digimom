@@ -14,7 +14,7 @@ const en: Dict = {
     role: "I connect business and AI",
     tagline:
       "From learning to shipping. From the foundations of large-scale infrastructure up to the modern AI application layer, I turn business needs into systems that actually run.",
-    ctaProjects: "See experience",
+    ctaProjects: "Read the blog",
     ctaContact: "Get in touch",
     scroll: "Scroll",
   },

@@ -14,7 +14,7 @@ const zh: Dict = {
     role: "连接业务与 AI",
     tagline:
       "从学习走向落地。从大规模基础设施的底层，到最新的 AI 应用层，把业务需求做成真正能跑起来的系统。",
-    ctaProjects: "查看经历",
+    ctaProjects: "阅读博客",
     ctaContact: "联系我",
     scroll: "向下滚动",
   },

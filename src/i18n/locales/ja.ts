@@ -14,7 +14,7 @@ const ja: Dict = {
     role: "ビジネスと AI をつなぐ",
     tagline:
       "学習を超えて実行へ。大規模インフラの土台から最新の AI アプリケーション層まで、ビジネスの要求を実際に動くシステムへと形にします。",
-    ctaProjects: "経歴を見る",
+    ctaProjects: "ブログを読む",
     ctaContact: "連絡する",
     scroll: "スクロール",
   },

@@ -5,10 +5,10 @@ import { SITE } from "../config/site";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const SECTIONS = [
+  "writing",
+  "projects",
   "about",
   "experience",
-  "projects",
-  "writing",
   "connect",
 ] as const;
 

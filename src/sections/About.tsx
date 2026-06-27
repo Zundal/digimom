@@ -12,7 +12,7 @@ export default function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
       <SectionHeading
-        index="01"
+        index="05"
         eyebrow={t("about.eyebrow")}
         title={t("about.title")}
       />

@@ -9,7 +9,7 @@ export default function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
       <SectionHeading
-        index="02"
+        index="06"
         eyebrow={t("experience.eyebrow")}
         title={t("experience.title")}
         subtitle={t("experience.subtitle")}

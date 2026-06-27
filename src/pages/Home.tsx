@@ -12,12 +12,12 @@ export default function Home() {
     <>
       <Hero />
       <div className="hairline mx-auto max-w-6xl" />
-      <About />
-      <Experience />
-      <Projects />
       <Writing />
+      <Projects />
       <Playground />
       <Resonance />
+      <About />
+      <Experience />
       <Connect />
     </>
   );

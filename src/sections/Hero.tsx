@@ -68,7 +68,7 @@ export default function Hero() {
           className="mt-10 flex flex-wrap items-center gap-3"
         >
           <button
-            onClick={() => scrollTo("projects")}
+            onClick={() => scrollTo("writing")}
             className="rounded-full bg-text px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03] active:scale-95"
           >
             {t("hero.ctaProjects")}
@@ -84,7 +84,7 @@ export default function Hero() {
 
       {/* Scroll cue. */}
       <motion.button
-        onClick={() => scrollTo("about")}
+        onClick={() => scrollTo("writing")}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}

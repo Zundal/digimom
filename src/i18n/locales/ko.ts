@@ -12,7 +12,7 @@ const ko = {
     role: "비즈니스와 AI를 잇습니다",
     tagline:
       "학습을 넘어 실행으로. 대규모 인프라의 밑단부터 최신 AI 애플리케이션 레이어까지, 비즈니스 요구를 실제로 동작하는 시스템으로 만듭니다.",
-    ctaProjects: "경력 보기",
+    ctaProjects: "글 보기",
     ctaContact: "연락하기",
     scroll: "스크롤",
   },
