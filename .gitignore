@@ -34,3 +34,9 @@ pnpm-debug.log*
 .playwright-mcp
 *.png
 !public/**/*.png
+
+# playwright
+/test-results
+/playwright-report
+/blob-report
+.cache

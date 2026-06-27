@@ -30,9 +30,13 @@ i18n
     },
   });
 
-// Keep <html lang> in sync for a11y + SEO.
-i18n.on("languageChanged", (lng) => {
-  document.documentElement.lang = lng;
-});
+// Keep <html lang> in sync for a11y + SEO — on both initial detection and
+// every later switch (languageChanged doesn't fire on the first load).
+const syncHtmlLang = (lng?: string) => {
+  document.documentElement.lang = lng || i18n.resolvedLanguage || "en";
+};
+i18n.on("languageChanged", syncHtmlLang);
+i18n.on("initialized", () => syncHtmlLang());
+syncHtmlLang();
 
 export default i18n;
