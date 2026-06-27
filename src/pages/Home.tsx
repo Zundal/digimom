@@ -4,6 +4,7 @@ import Experience from "../sections/Experience";
 import Projects from "../sections/Projects";
 import Writing from "../sections/Writing";
 import Playground from "../sections/Playground";
+import Resonance from "../sections/Resonance";
 import Connect from "../sections/Connect";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Projects />
       <Writing />
       <Playground />
+      <Resonance />
       <Connect />
     </>
   );

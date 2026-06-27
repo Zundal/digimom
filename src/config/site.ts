@@ -105,6 +105,21 @@ export const POSTS: Post[] = [
   { id: "shippingFast", date: "2026-05-30", readingMin: 4, tag: "process" },
 ];
 
+// Songs for the audio-reactive 3D keyboard ("Resonance" section).
+// Files live in public/audio and are served from the deploy base.
+// Display title / mood are localized via i18n (resonance.tracks.<id>.*).
+export type Track = {
+  id: string;
+  file: string;
+  accent: "violet" | "aqua" | "pink";
+};
+
+export const TRACKS: Track[] = [
+  { id: "cloudAbove", file: "audio/cloud-above.mp3", accent: "aqua" },
+  { id: "ridingCurrent", file: "audio/riding-the-current.mp3", accent: "violet" },
+  { id: "architect", file: "audio/architect-of-the-invisible.mp3", accent: "pink" },
+];
+
 export const LOCALES: { code: Locale; label: string; short: string }[] = [
   { code: "ko", label: "한국어", short: "KO" },
   { code: "en", label: "English", short: "EN" },

@@ -134,6 +134,27 @@ const en: Dict = {
       "Just as thousands of points converge into a shape, I aim to handle data so it can be seen and felt — not merely stored.",
     hint: "Click: change shape · Cursor: scatter",
   },
+  resonance: {
+    eyebrow: "Sound × Interaction",
+    title: "Play the music as light",
+    subtitle:
+      "Pick a track and notes fall in time with the music. Hit them on the beat with the D·F·J·K keys — or tap the screen on mobile.",
+    idle: "Choose a track",
+    analyzing: "Analyzing…",
+    fullscreen: "Fullscreen",
+    exit: "Close",
+    restart: "Restart",
+    best: "Best",
+    combo: "Combo",
+    howto: "D · F · J · K or tap",
+    rotate: "Rotate your device to landscape",
+    judge: { perfect: "Perfect", good: "Good", miss: "Miss" },
+    tracks: {
+      cloudAbove: { title: "구름 위로" },
+      ridingCurrent: { title: "전류를 타고" },
+      architect: { title: "Architect of the Invisible" },
+    },
+  },
   connect: {
     eyebrow: "Connect",
     title: "Build together, or just say hi",

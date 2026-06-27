@@ -132,6 +132,27 @@ const ko = {
       "수천 개의 점이 모여 형태가 되듯, 단순히 저장하는 데서 그치지 않고 데이터를 눈으로 보고 감각으로 느낄 수 있게 다루는 것을 지향합니다.",
     hint: "클릭: 형태 변경 · 커서: 흩뜨리기",
   },
+  resonance: {
+    eyebrow: "사운드 × 인터랙션",
+    title: "음악을, 빛으로 연주하다",
+    subtitle:
+      "노래를 고르면 떨어지는 노트가 박자에 맞춰 내려옵니다. 키보드 D·F·J·K 또는 화면을 터치해 타이밍에 맞춰 두드려 보세요.",
+    idle: "노래를 선택하세요",
+    analyzing: "분석 중…",
+    fullscreen: "전체화면",
+    exit: "닫기",
+    restart: "다시",
+    best: "최고",
+    combo: "콤보",
+    howto: "D · F · J · K 또는 터치",
+    rotate: "기기를 가로로 돌려주세요",
+    judge: { perfect: "퍼펙트", good: "굿", miss: "미스" },
+    tracks: {
+      cloudAbove: { title: "구름 위로" },
+      ridingCurrent: { title: "전류를 타고" },
+      architect: { title: "Architect of the Invisible" },
+    },
+  },
   connect: {
     eyebrow: "연결",
     title: "함께 만들거나, 그냥 인사하거나",

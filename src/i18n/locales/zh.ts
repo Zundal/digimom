@@ -131,6 +131,27 @@ const zh: Dict = {
       "正如成千上万的点汇聚成形，我追求把数据处理得能被看见、被感知，而不只是被存储。",
     hint: "点击：切换形态 · 光标：打散",
   },
+  resonance: {
+    eyebrow: "声音 × 交互",
+    title: "用光，演奏音乐",
+    subtitle:
+      "选择一首歌，音符会随节拍落下。用键盘 D·F·J·K，或在手机上点击屏幕，踩准时机敲击吧。",
+    idle: "请选择一首歌",
+    analyzing: "分析中…",
+    fullscreen: "全屏",
+    exit: "关闭",
+    restart: "重玩",
+    best: "最佳",
+    combo: "连击",
+    howto: "D · F · J · K 或点击",
+    rotate: "请将设备旋转为横屏",
+    judge: { perfect: "完美", good: "不错", miss: "失误" },
+    tracks: {
+      cloudAbove: { title: "구름 위로" },
+      ridingCurrent: { title: "전류를 타고" },
+      architect: { title: "Architect of the Invisible" },
+    },
+  },
   connect: {
     eyebrow: "联系",
     title: "一起做点东西，或只是打个招呼",

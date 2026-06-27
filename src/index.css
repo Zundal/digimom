@@ -178,3 +178,65 @@ body {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* Rhythm-game judgement popup. */
+@keyframes judgePop {
+  0% {
+    transform: scale(0.6) translateY(6px);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1.25) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+}
+.judge-pop {
+  animation: judgePop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .judge-pop {
+    animation: none;
+  }
+}
+
+/* Dark blurred backing so HUD text stays readable over the bright 3D scene. */
+.hud-chip {
+  background: color-mix(in srgb, var(--color-ink) 62%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--color-line) 80%, transparent);
+}
+
+/* Wiggle the rotate-to-landscape phone hint. */
+@keyframes rotateHint {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+}
+.rotate-hint {
+  display: inline-block;
+  animation: rotateHint 2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rotate-hint {
+    animation: none;
+  }
+}
+
+/* Heavy text shadow for labels that float directly over the canvas. */
+.text-legible {
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 0 12px rgba(0, 0, 0, 0.7);
+}

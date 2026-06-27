@@ -134,6 +134,27 @@ const ja: Dict = {
       "無数の点が集まって形になるように、ただ保存するだけでなく、データを目で見て感覚で捉えられるように扱うことを目指しています。",
     hint: "クリック: 形を変える · カーソル: 散らす",
   },
+  resonance: {
+    eyebrow: "サウンド × インタラクション",
+    title: "音楽を、光で奏でる",
+    subtitle:
+      "曲を選ぶと、ノーツが拍に合わせて落ちてきます。キーボードの D・F・J・K、またはモバイルは画面タップでタイミングよく叩いてください。",
+    idle: "曲を選んでください",
+    analyzing: "解析中…",
+    fullscreen: "全画面",
+    exit: "閉じる",
+    restart: "リスタート",
+    best: "ベスト",
+    combo: "コンボ",
+    howto: "D・F・J・K またはタップ",
+    rotate: "端末を横向きにしてください",
+    judge: { perfect: "パーフェクト", good: "グッド", miss: "ミス" },
+    tracks: {
+      cloudAbove: { title: "구름 위로" },
+      ridingCurrent: { title: "전류를 타고" },
+      architect: { title: "Architect of the Invisible" },
+    },
+  },
   connect: {
     eyebrow: "つながる",
     title: "一緒に作る、ただ挨拶でも",
