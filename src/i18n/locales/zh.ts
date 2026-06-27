@@ -9,7 +9,7 @@ const zh: Dict = {
     connect: "联系",
   },
   hero: {
-    eyebrow: "AX 工程师 · 后端 · 第 7 年",
+    eyebrow: "AX 工程师 · 后端",
     name: "安正植",
     role: "连接业务与 AI",
     tagline:
@@ -21,11 +21,11 @@ const zh: Dict = {
   about: {
     eyebrow: "关于",
     title: "从基础设施底层到 AI 层",
-    p1: "你好，我是安正植，网上叫 Zundal。我是一名拥有 7 年经验的后端与 AX 工程师，目前在 KB 资产管理的 AI 技术团队，把业务需求落地为真正的 AI 功能。",
+    p1: "你好，我是安正植，网上叫 Zundal。我是一名后端与 AX 工程师，目前在 KB 资产管理的 AI 技术团队，把业务需求落地为真正的 AI 功能。",
     p2: "我从处理高并发流量、运维大规模云基础设施起步；如今用多个 LLM 与基于 MCP、事件驱动的架构来设计公司内部的 AI 智能体生态。我纵观从系统底层到 AI 应用层的整体架构，专注于用可维护的代码证明业务价值。",
     facts: [
       { k: "现在", v: "KB 资产管理 · AI 技术 负责人" },
-      { k: "经验", v: "后端 · AX · 7 年" },
+      { k: "角色", v: "后端 · AX 工程师" },
       { k: "领域", v: "金融 · 云 · AI" },
       { k: "主力", v: "Spring · Python · LLM · MCP" },
       { k: "语言", v: "韩语 · 日语 (JLPT N1) · English" },
@@ -34,7 +34,7 @@ const zh: Dict = {
   experience: {
     eyebrow: "经历",
     title: "走过的地方",
-    subtitle: "横跨多个领域、从基础设施到 AI 的七年。",
+    subtitle: "横跨多个领域，从基础设施到 AI。",
     present: "至今",
     items: {
       kbam: {

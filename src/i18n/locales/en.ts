@@ -9,7 +9,7 @@ const en: Dict = {
     connect: "Connect",
   },
   hero: {
-    eyebrow: "AX Engineer · Backend · 7 yrs",
+    eyebrow: "AX Engineer · Backend",
     name: "Jeongsik An",
     role: "I connect business and AI",
     tagline:
@@ -21,11 +21,11 @@ const en: Dict = {
   about: {
     eyebrow: "About",
     title: "From the infra layer to the AI layer",
-    p1: "Hi, I'm Jeongsik An — Zundal online. I'm a backend & AX engineer with 7 years of experience, currently turning business requirements into real AI features on the AI Tech team at KB Asset Management.",
+    p1: "Hi, I'm Jeongsik An — Zundal online. I'm a backend & AX engineer, currently turning business requirements into real AI features on the AI Tech team at KB Asset Management.",
     p2: "I started out handling high-traffic workloads and operating large-scale cloud infrastructure; today I design in-house AI agent ecosystems with multiple LLMs and MCP-driven, event-based architectures. I work across the whole stack — from the system's foundation to the AI application layer — and focus on proving business value through maintainable code.",
     facts: [
       { k: "Now", v: "KB Asset Mgmt · AI Tech, Lead" },
-      { k: "Experience", v: "Backend · AX · 7 years" },
+      { k: "Role", v: "Backend · AX Engineer" },
       { k: "Domains", v: "Finance · Cloud · AI" },
       { k: "Core", v: "Spring · Python · LLM · MCP" },
       { k: "Languages", v: "Korean · Japanese (JLPT N1) · English" },
@@ -34,7 +34,7 @@ const en: Dict = {
   experience: {
     eyebrow: "Experience",
     title: "Where I've been",
-    subtitle: "Seven years spanning domains, from infrastructure to AI.",
+    subtitle: "Spanning domains, from infrastructure to AI.",
     present: "Present",
     items: {
       kbam: {
