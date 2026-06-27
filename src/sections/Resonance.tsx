@@ -392,15 +392,7 @@ export default function Resonance() {
           )}
         </div>
 
-        {/* Exit (immersive) */}
-        {immersive && (
-          <button
-            onClick={toggleImmersive}
-            className="hud-chip absolute right-3 top-20 z-20 rounded-full px-4 py-2 text-xs font-medium text-text transition-colors hover:text-pink sm:top-5"
-          >
-            {t("resonance.exit")} ✕
-          </button>
-        )}
+        {/* (Exit in immersive mode is the "Close" button in the controls row.) */}
 
         {/* Rotate-to-landscape hint when a phone can't auto-rotate */}
         {immersive && portrait && (
