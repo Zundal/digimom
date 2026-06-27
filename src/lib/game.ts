@@ -3,7 +3,11 @@ import { LANES } from "./chart";
 export { LANES };
 
 // Physical keys (left + right hand) and the colour for each lane, left→right.
+// LANE_CODES are KeyboardEvent.code values — these match the physical key
+// regardless of layout or IME state (e.g. Korean 한글 mode), so input works
+// without the user having to switch back to English.
 export const LANE_KEYS = ["d", "f", "j", "k"];
+export const LANE_CODES = ["KeyD", "KeyF", "KeyJ", "KeyK"];
 export const LANE_COLORS = ["#7c5cff", "#36e0c8", "#ffc46f", "#ff6fb5"];
 
 // Lane geometry, matched to the keyboard width in KeyboardScene.

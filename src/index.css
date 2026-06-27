@@ -234,6 +234,20 @@ body {
   }
 }
 
+/* Lane key chip: pulses bright when its key/lane is pressed. */
+.lane-chip {
+  transition:
+    transform 0.1s ease,
+    background-color 0.1s ease,
+    box-shadow 0.1s ease;
+}
+.lane-chip.lane-hit {
+  transform: translateX(-50%) scale(1.35);
+  background: var(--lane);
+  box-shadow: 0 0 22px var(--lane);
+  color: #0b0b12 !important;
+}
+
 /* Heavy text shadow for labels that float directly over the canvas. */
 .text-legible {
   text-shadow:

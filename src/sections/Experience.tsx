@@ -1,13 +1,7 @@
 import { useTranslation } from "react-i18next";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
-import { EXPERIENCE } from "../config/site";
-
-const ACCENT: Record<string, string> = {
-  violet: "var(--color-violet)",
-  aqua: "var(--color-aqua)",
-  pink: "var(--color-pink)",
-};
+import { ACCENT_COLOR, EXPERIENCE } from "../config/site";
 
 export default function Experience() {
   const { t } = useTranslation();
@@ -29,13 +23,13 @@ export default function Experience() {
               {/* Node on the line. */}
               <span
                 className="absolute -left-[1.6rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-ink sm:-left-[2.6rem]"
-                style={{ background: ACCENT[e.accent] }}
+                style={{ background: ACCENT_COLOR[e.accent] }}
                 aria-hidden
               />
               {e.current && (
                 <span
                   className="absolute -left-[1.6rem] top-1.5 h-3 w-3 animate-ping rounded-full sm:-left-[2.6rem]"
-                  style={{ background: ACCENT[e.accent], opacity: 0.5 }}
+                  style={{ background: ACCENT_COLOR[e.accent], opacity: 0.5 }}
                   aria-hidden
                 />
               )}
@@ -48,8 +42,8 @@ export default function Experience() {
                   <span
                     className="rounded-full px-2 py-0.5 font-mono text-[0.6rem] tracking-widest"
                     style={{
-                      color: ACCENT[e.accent],
-                      background: `color-mix(in srgb, ${ACCENT[e.accent]} 14%, transparent)`,
+                      color: ACCENT_COLOR[e.accent],
+                      background: `color-mix(in srgb, ${ACCENT_COLOR[e.accent]} 14%, transparent)`,
                     }}
                   >
                     {t("experience.present")}

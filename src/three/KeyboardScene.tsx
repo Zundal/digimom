@@ -355,9 +355,7 @@ function Stage({
       const gm = glowRef.current.material as THREE.MeshBasicMaterial;
       gm.opacity = 0.22 + bass * 0.5;
     }
-    if (group.current && !reduced) {
-      group.current.rotation.y = Math.sin(t * 0.16) * 0.05;
-    }
+    // Keyboard stays square-on (no sway) so lanes read straight for play.
   });
 
   return (

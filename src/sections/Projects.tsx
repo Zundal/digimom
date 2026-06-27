@@ -2,14 +2,8 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import SectionHeading from "../components/SectionHeading";
 import Reveal from "../components/Reveal";
-import { PROJECTS, type Project } from "../config/site";
+import { ACCENT_COLOR, PROJECTS, type Project } from "../config/site";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
-
-const ACCENT: Record<string, string> = {
-  violet: "var(--color-violet)",
-  aqua: "var(--color-aqua)",
-  pink: "var(--color-pink)",
-};
 
 function ProjectCard({ p }: { p: Project }) {
   const { t } = useTranslation();
@@ -46,13 +40,13 @@ function ProjectCard({ p }: { p: Project }) {
       <span
         aria-hidden
         className="card-sheen"
-        style={{ ["--accent" as string]: ACCENT[p.accent] } as React.CSSProperties}
+        style={{ ["--accent" as string]: ACCENT_COLOR[p.accent] } as React.CSSProperties}
       />
 
       <div className="relative mb-6 flex items-center justify-between">
         <span
           className="h-2.5 w-2.5 rounded-full"
-          style={{ background: ACCENT[p.accent] }}
+          style={{ background: ACCENT_COLOR[p.accent] }}
           aria-hidden
         />
         <span className="font-mono text-xs text-faint">{p.year}</span>

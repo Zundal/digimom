@@ -3,6 +3,16 @@
 
 export type Locale = "ko" | "en" | "ja" | "zh";
 
+// The three brand accents and their themed CSS colours. Shared by every
+// section that tints UI by accent (Experience, Projects, Resonance).
+export type Accent = "violet" | "aqua" | "pink";
+
+export const ACCENT_COLOR: Record<Accent, string> = {
+  violet: "var(--color-violet)",
+  aqua: "var(--color-aqua)",
+  pink: "var(--color-pink)",
+};
+
 export const SITE = {
   handle: "Zundal",
   email: "ajs15010120@gmail.com",
@@ -30,7 +40,7 @@ export const SOCIALS: Social[] = [
 // i18n under experience.items.<id>.
 export type Experience = {
   id: string;
-  accent: "violet" | "aqua" | "pink";
+  accent: Accent;
   stack: string[];
   current?: boolean;
 };
@@ -64,7 +74,7 @@ export type Project = {
   href: string;
   year: string;
   stack: string[];
-  accent: "violet" | "aqua" | "pink";
+  accent: Accent;
 };
 
 export const PROJECTS: Project[] = [
@@ -111,7 +121,7 @@ export const POSTS: Post[] = [
 export type Track = {
   id: string;
   file: string;
-  accent: "violet" | "aqua" | "pink";
+  accent: Accent;
 };
 
 export const TRACKS: Track[] = [

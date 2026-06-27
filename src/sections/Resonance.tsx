@@ -6,14 +6,16 @@ import {
   useMemo,
   useRef,
   useState,
+  type CSSProperties,
 } from "react";
 import { useTranslation } from "react-i18next";
 import SectionHeading from "../components/SectionHeading";
-import { TRACKS } from "../config/site";
+import { ACCENT_COLOR, TRACKS } from "../config/site";
 import { useAudioEngine } from "../hooks/useAudioEngine";
 import {
   GOOD,
   LANES,
+  LANE_CODES,
   LANE_COLORS,
   LANE_KEYS,
   PERFECT,
@@ -23,13 +25,30 @@ import {
 
 const KeyboardScene = lazy(() => import("../three/KeyboardScene"));
 
-const ACCENT: Record<string, string> = {
-  violet: "#7c5cff",
-  aqua: "#36e0c8",
-  pink: "#ff6fb5",
+const asset = (p: string) => `${import.meta.env.BASE_URL}${p}`;
+
+// Screen Orientation API is partially typed / unsupported on some browsers
+// (notably iOS), so guard both calls and swallow failures.
+type LockableOrientation = ScreenOrientation & {
+  lock?: (o: string) => Promise<void>;
+  unlock?: () => void;
 };
 
-const asset = (p: string) => `${import.meta.env.BASE_URL}${p}`;
+async function lockLandscape() {
+  try {
+    await (screen.orientation as LockableOrientation).lock?.("landscape");
+  } catch {
+    /* Unsupported (e.g. iOS) — the rotate hint covers this case. */
+  }
+}
+
+function unlockOrientation() {
+  try {
+    (screen.orientation as LockableOrientation).unlock?.();
+  } catch {
+    /* noop */
+  }
+}
 
 export default function Resonance() {
   const { t } = useTranslation();
@@ -48,6 +67,15 @@ export default function Resonance() {
   const armed = useRef(false);
   const missPtr = useRef(0);
   const judgeKey = useRef(0);
+  const chipRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+  // Briefly light the on-screen lane chip so a keypress is clearly confirmed.
+  const pulseChip = useCallback((lane: number) => {
+    const el = chipRefs.current[lane];
+    if (!el) return;
+    el.classList.add("lane-hit");
+    window.setTimeout(() => el.classList.remove("lane-hit"), 130);
+  }, []);
 
   const active =
     engine.isPlaying ||
@@ -67,6 +95,7 @@ export default function Resonance() {
     (lane: number) => {
       engine.pluck(lane);
       bus.flash[lane] = 1;
+      pulseChip(lane);
 
       const now = engine.getTime();
       const notes = engine.chartRef.current;
@@ -96,7 +125,7 @@ export default function Resonance() {
         setJudge({ type: grade, key: judgeKey.current });
       }
     },
-    [engine, bus]
+    [engine, bus, pulseChip]
   );
 
   // Track / playback control wrappers that also reset the game.
@@ -119,7 +148,10 @@ export default function Resonance() {
       if (!armed.current || e.repeat) return;
       const el = document.activeElement;
       if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA")) return;
-      const lane = LANE_KEYS.indexOf(e.key.toLowerCase());
+      // Match the physical key first (works in any layout / IME, incl. 한글);
+      // fall back to the character for keyboards without `code`.
+      let lane = LANE_CODES.indexOf(e.code);
+      if (lane < 0) lane = LANE_KEYS.indexOf(e.key.toLowerCase());
       if (lane >= 0) {
         e.preventDefault();
         hit(lane);
@@ -172,31 +204,19 @@ export default function Resonance() {
 
   const enterImmersive = useCallback(async () => {
     setImmersive(true);
-    const el = wrapRef.current;
     try {
-      if (el?.requestFullscreen) await el.requestFullscreen();
+      if (wrapRef.current?.requestFullscreen)
+        await wrapRef.current.requestFullscreen();
     } catch {
       /* iOS blocks element fullscreen — the CSS overlay still applies. */
     }
     // Phones play best in landscape; lock when the API allows it.
-    try {
-      const o = screen.orientation as ScreenOrientation & {
-        lock?: (o: string) => Promise<void>;
-      };
-      await o.lock?.("landscape");
-    } catch {
-      /* Unsupported (e.g. iOS) — the rotate hint covers this case. */
-    }
+    await lockLandscape();
   }, []);
 
   const exitImmersive = useCallback(async () => {
     setImmersive(false);
-    try {
-      (screen.orientation as ScreenOrientation & { unlock?: () => void })
-        .unlock?.();
-    } catch {
-      /* noop */
-    }
+    unlockOrientation();
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
     } catch {
@@ -213,12 +233,7 @@ export default function Resonance() {
     const onFs = () => {
       if (!document.fullscreenElement) {
         setImmersive(false);
-        try {
-          (screen.orientation as ScreenOrientation & { unlock?: () => void })
-            .unlock?.();
-        } catch {
-          /* noop */
-        }
+        unlockOrientation();
       }
     };
     document.addEventListener("fullscreenchange", onFs);
@@ -300,8 +315,17 @@ export default function Resonance() {
                 }}
               />
               <span
-                className="hud-chip pointer-events-none absolute bottom-2 left-1/2 grid h-7 w-7 -translate-x-1/2 place-items-center rounded-lg font-mono text-sm font-bold"
-                style={{ color: LANE_COLORS[l] }}
+                ref={(el) => {
+                  chipRefs.current[l] = el;
+                }}
+                className="lane-chip hud-chip pointer-events-none absolute bottom-2 left-1/2 grid h-8 w-8 -translate-x-1/2 place-items-center rounded-lg font-mono text-sm font-bold"
+                style={
+                  {
+                    color: LANE_COLORS[l],
+                    borderColor: LANE_COLORS[l],
+                    "--lane": LANE_COLORS[l],
+                  } as CSSProperties
+                }
               >
                 {LANE_KEYS[l].toUpperCase()}
               </span>
@@ -407,7 +431,7 @@ export default function Resonance() {
               {TRACKS.map((track) => {
                 const playing =
                   engine.currentId === track.id && engine.isPlaying;
-                const accent = ACCENT[track.accent];
+                const accent = ACCENT_COLOR[track.accent];
                 return (
                   <button
                     key={track.id}
