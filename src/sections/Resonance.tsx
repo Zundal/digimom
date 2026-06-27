@@ -299,10 +299,10 @@ export default function Resonance() {
 
         {/* Contrast scrims so overlay text stays readable over the scene */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/85 via-ink/30 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-ink via-ink/85 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-ink via-ink/85 to-transparent sm:h-60" />
 
         {/* Touch lanes (also catch mouse clicks) */}
-        <div className="absolute inset-x-0 bottom-[7.5rem] top-16 flex sm:bottom-24">
+        <div className="absolute inset-x-0 bottom-[9rem] top-16 flex sm:bottom-40">
           {Array.from({ length: LANES }, (_, l) => (
             <button
               key={l}
@@ -419,95 +419,106 @@ export default function Resonance() {
         )}
 
         {/* Controls */}
-        <div className="absolute inset-x-0 bottom-0 z-10 p-3 sm:p-5">
-          <div className="mb-2.5 flex items-center gap-3">
-            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-line/70">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-aqua via-violet to-pink"
-                style={{ width: `${engine.progress * 100}%` }}
-              />
-            </div>
-            <span className="hidden font-mono text-[0.65rem] tracking-wider text-muted sm:inline">
-              {t("resonance.howto")}
-            </span>
-            {/* Note speed (배속) — scrolls notes faster without changing pitch */}
-            <div className="hud-chip flex shrink-0 items-center gap-0.5 rounded-full p-0.5">
-              <span className="px-1.5 font-mono text-[0.6rem] tracking-wide text-faint">
-                {t("resonance.speed")}
-              </span>
-              {SPEEDS.map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setSpeed(s)}
-                  className="rounded-full px-2 py-0.5 font-mono text-[0.7rem] font-bold transition-colors"
-                  style={{
-                    background: speed === s ? "var(--color-aqua)" : "transparent",
-                    color: speed === s ? "#0b0b12" : "var(--color-muted)",
-                  }}
-                >
-                  {s}×
-                </button>
-              ))}
-            </div>
+        <div className="absolute inset-x-0 bottom-0 z-10 space-y-2.5 p-3 sm:p-5">
+          {/* Progress */}
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-line/70">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-aqua via-violet to-pink transition-[width] duration-200"
+              style={{ width: `${engine.progress * 100}%` }}
+            />
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Track chips — horizontally scrollable on small screens */}
-            <div className="scrollbar-none flex flex-1 gap-2 overflow-x-auto">
-              {TRACKS.map((track) => {
-                const playing =
-                  engine.currentId === track.id && engine.isPlaying;
-                const accent = ACCENT_COLOR[track.accent];
-                return (
-                  <button
-                    key={track.id}
-                    onClick={() => onTrack(track.id, asset(track.file))}
-                    className="hud-chip flex shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs font-medium transition-all sm:px-4 sm:py-2.5 sm:text-sm"
+          {/* Row 1 — track picker */}
+          <div className="scrollbar-none flex gap-2 overflow-x-auto">
+            {TRACKS.map((track) => {
+              const playing =
+                engine.currentId === track.id && engine.isPlaying;
+              const accent = ACCENT_COLOR[track.accent];
+              return (
+                <button
+                  key={track.id}
+                  onClick={() => onTrack(track.id, asset(track.file))}
+                  className="hud-chip flex shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs font-medium transition-all sm:px-4 sm:py-2.5 sm:text-sm"
+                  style={{
+                    borderColor: playing ? accent : undefined,
+                    color: playing ? accent : "var(--color-text)",
+                  }}
+                >
+                  <span
+                    aria-hidden
+                    className="grid h-5 w-5 place-items-center rounded-full text-[0.6rem] sm:h-6 sm:w-6"
                     style={{
-                      borderColor: playing ? accent : undefined,
-                      color: playing ? accent : "var(--color-text)",
+                      background: playing ? accent : "var(--color-surface-2)",
+                      color: playing ? "#0b0b12" : accent,
                     }}
                   >
-                    <span
-                      aria-hidden
-                      className="grid h-5 w-5 place-items-center rounded-full text-[0.6rem] sm:h-6 sm:w-6"
+                    {playing ? "❚❚" : "▶"}
+                  </span>
+                  <span className="whitespace-nowrap">
+                    {t(`resonance.tracks.${track.id}.title`)}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Row 2 — note speed + restart + fullscreen */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Note speed (배속) — scrolls notes faster without changing pitch */}
+            <div className="hud-chip flex shrink-0 items-center gap-1 rounded-full py-1 pl-2.5 pr-1">
+              <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-faint">
+                {t("resonance.speed")}
+              </span>
+              <div className="flex items-center gap-0.5">
+                {SPEEDS.map((s) => {
+                  const on = speed === s;
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => setSpeed(s)}
+                      aria-pressed={on}
+                      className="rounded-full px-2.5 py-1 font-mono text-xs font-bold leading-none transition-all"
                       style={{
-                        background: playing ? accent : "var(--color-surface-2)",
-                        color: playing ? "#0b0b12" : accent,
+                        background: on ? "var(--color-aqua)" : "transparent",
+                        color: on ? "#0b0b12" : "var(--color-muted)",
+                        boxShadow: on
+                          ? "0 0 14px color-mix(in srgb, var(--color-aqua) 55%, transparent)"
+                          : "none",
                       }}
                     >
-                      {playing ? "❚❚" : "▶"}
-                    </span>
-                    <span className="whitespace-nowrap">
-                      {t(`resonance.tracks.${track.id}.title`)}
-                    </span>
-                  </button>
-                );
-              })}
+                      {s}×
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
-            <button
-              onClick={onRestart}
-              disabled={!engine.currentId}
-              aria-label={t("resonance.restart")}
-              className="hud-chip shrink-0 rounded-full px-3 py-2 text-sm font-medium text-text transition-colors hover:text-violet disabled:opacity-40 sm:px-4 sm:py-2.5"
-            >
-              <span aria-hidden>↺</span>
-              <span className="ml-1.5 hidden sm:inline">
-                {t("resonance.restart")}
-              </span>
-            </button>
+            <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
+              <button
+                onClick={onRestart}
+                disabled={!engine.currentId}
+                aria-label={t("resonance.restart")}
+                className="hud-chip rounded-full px-3 py-2 text-sm font-medium text-text transition-colors hover:text-violet disabled:opacity-40 sm:px-4 sm:py-2.5"
+              >
+                <span aria-hidden>↺</span>
+                <span className="ml-1.5 hidden sm:inline">
+                  {t("resonance.restart")}
+                </span>
+              </button>
 
-            <button
-              onClick={toggleImmersive}
-              aria-label={immersive ? t("resonance.exit") : t("resonance.fullscreen")}
-              className="hud-chip shrink-0 rounded-full px-3 py-2 text-sm font-medium text-text transition-colors hover:text-aqua sm:px-4 sm:py-2.5"
-            >
-              <span aria-hidden>⛶</span>
-              <span className="ml-1.5 hidden sm:inline">
-                {immersive ? t("resonance.exit") : t("resonance.fullscreen")}
-              </span>
-            </button>
+              <button
+                onClick={toggleImmersive}
+                aria-label={
+                  immersive ? t("resonance.exit") : t("resonance.fullscreen")
+                }
+                className="hud-chip rounded-full px-3 py-2 text-sm font-medium text-text transition-colors hover:text-aqua sm:px-4 sm:py-2.5"
+              >
+                <span aria-hidden>⛶</span>
+                <span className="ml-1.5 hidden sm:inline">
+                  {immersive ? t("resonance.exit") : t("resonance.fullscreen")}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
