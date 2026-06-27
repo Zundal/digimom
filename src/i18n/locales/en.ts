@@ -93,9 +93,55 @@ const en: Dict = {
     subtitle: "What I learn while building, and the notes along the way.",
     readMore: "Keep reading",
     min: "min",
-    tags: { intro: "Intro", craft: "Craft", process: "Process" },
+    tags: { intro: "Intro", craft: "Craft", process: "Process", mind: "Mind" },
   },
   posts: {
+    sensation: {
+      title: "How the World Reaches Me — Part 1: Sensation",
+      excerpt:
+        "We never see the world directly — only the signal our eyes and ears translate. A story about the first gateway: sensation.",
+      body: [
+        "Even as you read these words, light is shattering against the retina at the back of your eye. We never quite meet the world 'directly.' Everything we experience is the world as it looks after passing through a translator: the sense organs.",
+        "Sensation is the first step of that translation — the moment a physical event out there (a wavelength of light, a tremor in the air, pressure on the skin) reaches a receptor in the body. What's striking is that each organ accepts only a strictly defined kind of stimulus. The eye cannot hear sound; the ear cannot see light.",
+        "::figure:sensesGateway::",
+        "The five gateways each speak a different language. Eyes read electromagnetic waves, ears read vibration, the nose and tongue read chemicals. Yet by the time these different inputs arrive at the brain, they have all become the same thing: electrical signals.",
+        "This translation is called transduction — the instant a physical stimulus is converted into the electrical language neurons understand. Light, sound, warmth: once rendered into the language of nerve cells, they are no longer light or sound. They are just signals.",
+        "::figure:transduction::",
+        "There is one cold rule here. If a stimulus fails to cross a certain 'threshold,' nothing happens at all. A neuron does not respond halfway. Strong enough, and it fires; otherwise, silence — all or nothing.",
+        "So what we believe we 'see' is not light itself but the electrical trace light leaves behind. The world always reaches us secondhand. How, then, does this bundle of signals become 'meaning'? That's the story of Part 2: perception.",
+      ],
+    },
+    perception: {
+      title: "How the World Reaches Me — Part 2: Perception",
+      excerpt:
+        "The brain doesn't just receive signals — it interprets them. Why two people can look at the same light and see different things.",
+      body: [
+        "In Part 1 we saw the world translated into electrical signals and delivered to the brain. But a bundle of signals means nothing on its own. The place where 'meaning' is made is perception.",
+        "Perception happens in two directions at once. One flow starts from the sensory data and travels upward; the other starts from our expectations and experience and travels downward.",
+        "::figure:bottomUpTopDown::",
+        "With only bottom-up processing, we'd have to interpret the world laboriously, as if seeing it for the first time every time. Thanks to top-down processing, we read blurry handwriting from context and recognize a half-hidden face. The brain is a diligent guessing machine.",
+        "This guessing shows itself most vividly when the brain looks at scattered fragments and conjures a 'whole' on its own. In the early twentieth century, the Gestalt psychologists distilled this tendency into a handful of principles.",
+        "::figure:gestalt::",
+        "A few dots become a cluster; a broken line becomes a shape. We see more than is actually there, because the brain fills in the blanks. Optical illusions feel uncanny for the same reason — they aren't an error of the eye but an over-earnest interpretation by the brain.",
+        "So 'seeing' isn't passively receiving; it's the active work of constantly forming and testing hypotheses. The same signal becomes a different scene depending on who receives it and in what context. Where, then, does this interpreted world remain? That continues in Part 3: memory.",
+      ],
+    },
+    cognition: {
+      title: "How the World Reaches Me — Part 3: Memory & Cognition",
+      excerpt:
+        "Where does the interpreted world go? Attention, the gatekeeper — and the three rooms of memory.",
+      body: [
+        "We took in the world through sensation (Part 1) and interpreted it through perception (Part 2). Now the final question: where is all this experience stored, and how is it drawn back out?",
+        "Not everything stays. Countless stimuli pour in every moment, but most of them vanish in under a second. The decisive role here belongs to attention. Attention is the gatekeeper that decides what gets admitted to the next room of memory.",
+        "::figure:memoryFlow::",
+        "The psychologists Atkinson and Shiffrin drew memory as three rooms: a sensory memory where almost every input lingers briefly, a working memory we consciously hold onto in this very moment, and a long-term memory that stores things almost without limit.",
+        "The narrowest room sits in the middle. Working memory can hold only about seven items at once — more precisely, seven plus or minus two. Even as you read this sentence, your working memory is rapidly filling and emptying.",
+        "::figure:workingMemory::",
+        "The trick to widening that narrow desk is grouping. Seven is the limit for loose items, but bundled into meaningful chunks, far more can fit. Memorizing a phone number in three pieces, or a chess master taking in the whole board at a glance, work on the same principle.",
+        "Only information rehearsed enough in working memory crosses into long-term memory and stays. And when needed, it is retrieved back into working memory. Memory is less a static warehouse than a workbench we write and rewrite on endlessly.",
+        "Light becomes signal (Part 1), signal becomes meaning (Part 2), meaning becomes memory (Part 3) — only at the end of this long journey can we say 'the world has reached me.' We don't so much see the world as rebuild it, moment by moment.",
+      ],
+    },
     hello: {
       title: "Starting this space",
       excerpt:
@@ -125,6 +171,107 @@ const en: Dict = {
         "So I start small. Once one core thing works, I ship it, watch the response, and decide what's next. Direction comes from use, not from code.",
         "Fast doesn't mean careless — it means making the learning loop short.",
       ],
+    },
+  },
+  figures: {
+    sensesGateway: {
+      title: "The Five Gateways of Sensation",
+      caption: "Each organ admits only its own stimulus. Pick one.",
+      cols: { organ: "Organ", receptor: "Receptor", stimulus: "Stimulus" },
+      items: [
+        {
+          key: "sight",
+          label: "Sight",
+          organ: "Eye · retina",
+          receptor: "Photoreceptors (rods · cones)",
+          stimulus: "Light — electromagnetic waves",
+        },
+        {
+          key: "hearing",
+          label: "Hearing",
+          organ: "Ear · cochlea",
+          receptor: "Hair cells",
+          stimulus: "Vibration in air",
+        },
+        {
+          key: "touch",
+          label: "Touch",
+          organ: "Skin",
+          receptor: "Mechano- · thermoreceptors",
+          stimulus: "Pressure · temperature",
+        },
+        {
+          key: "smell",
+          label: "Smell",
+          organ: "Nose · olfactory epithelium",
+          receptor: "Olfactory receptors",
+          stimulus: "Airborne molecules",
+        },
+        {
+          key: "taste",
+          label: "Taste",
+          organ: "Tongue · taste buds",
+          receptor: "Taste cells",
+          stimulus: "Dissolved chemicals",
+        },
+      ],
+    },
+    transduction: {
+      title: "Transduction — when a stimulus becomes a signal",
+      caption: "A physical event is rendered into the electrical language of nerves.",
+      note: "A stimulus that never crosses the threshold never becomes a signal — all or nothing.",
+      steps: [
+        { label: "Physical stimulus", sub: "Light · sound · pressure" },
+        { label: "Receptor", sub: "A sensory cell takes it in" },
+        { label: "Threshold", sub: "Strong enough → it fires" },
+        { label: "Action potential", sub: "An electrical signal forms" },
+        { label: "Brain", sub: "The signal arrives" },
+      ],
+    },
+    bottomUpTopDown: {
+      title: "Perception, met from two directions",
+      caption: "Sensory data and expectation meet in the middle.",
+      note: "The two don't compete, they cooperate — when data runs short, expectation fills in.",
+      center: "Perception",
+      bottomUp: {
+        label: "Bottom-up",
+        sub: "Starts from sensory data",
+        ex: "Dots · lines · color → form",
+      },
+      topDown: {
+        label: "Top-down",
+        sub: "Starts from expectation & context",
+        ex: "Context → even blurry letters read",
+      },
+    },
+    gestalt: {
+      title: "Gestalt — the brain sees the whole",
+      caption: "Tap a principle to compare.",
+      principles: [
+        { key: "proximity", label: "Proximity", desc: "Things close together group into one." },
+        { key: "similarity", label: "Similarity", desc: "Things that look alike group together." },
+        { key: "continuity", label: "Continuity", desc: "We connect smooth flows over broken bits." },
+        { key: "closure", label: "Closure", desc: "We fill the gaps and see a finished form." },
+      ],
+    },
+    memoryFlow: {
+      title: "The three rooms of memory",
+      caption: "Hover a stage. Attention plays the gatekeeper.",
+      stages: [
+        { key: "sensory", label: "Sensory memory", sub: "Under a second · nearly all input" },
+        { key: "working", label: "Working memory", sub: "Tens of seconds · 7±2 items" },
+        { key: "longterm", label: "Long-term memory", sub: "Long · effectively unlimited" },
+      ],
+      arrows: { attention: "Attention", rehearsal: "Rehearsal", retrieval: "Retrieval", forget: "Forgetting" },
+    },
+    workingMemory: {
+      title: "The narrow desk of working memory",
+      caption: "About seven fit at once. Bundle them, and more do.",
+      raw: "Loose",
+      chunked: "Chunk them",
+      limit: "≈ 7±2",
+      note: "Chunking: even 11 digits become easy once grouped into three chunks.",
+      groups: ["010", "2451", "8893"],
     },
   },
   playground: {

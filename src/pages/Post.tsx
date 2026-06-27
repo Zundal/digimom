@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { POSTS } from "../config/site";
+import { FIGURES, FIGURE_RE } from "../posts/figures";
 
 export default function Post() {
   const { t, i18n } = useTranslation();
@@ -71,9 +72,14 @@ export default function Post() {
       </p>
 
       <div className="mt-10 space-y-6 text-lg leading-[1.85] text-text/90">
-        {body.map((para, i) => (
-          <p key={i}>{para}</p>
-        ))}
+        {body.map((para, i) => {
+          const fig = para.match(FIGURE_RE);
+          if (fig) {
+            const Figure = FIGURES[fig[1]];
+            return Figure ? <Figure key={i} /> : null;
+          }
+          return <p key={i}>{para}</p>;
+        })}
       </div>
 
       <div className="mt-16 hairline" />
