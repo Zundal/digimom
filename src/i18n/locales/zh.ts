@@ -3,45 +3,83 @@ import type { Dict } from "./ko";
 const zh: Dict = {
   nav: {
     about: "关于",
+    experience: "经历",
     projects: "项目",
     writing: "随笔",
     connect: "联系",
   },
   hero: {
-    eyebrow: "开发者 · 创造者 · 记录者",
+    eyebrow: "AX 工程师 · 后端 · 第 7 年",
     name: "安正植",
-    role: "在动手中思考",
+    role: "连接业务与 AI",
     tagline:
-      "我喜欢把想法变成屏幕上能真正触碰的东西——从小工具到有趣的体验，都亲手做、亲手学。",
-    ctaProjects: "查看作品",
+      "从学习走向落地。从大规模基础设施的底层，到最新的 AI 应用层，把业务需求做成真正能跑起来的系统。",
+    ctaProjects: "查看经历",
     ctaContact: "联系我",
     scroll: "向下滚动",
   },
   about: {
     eyebrow: "关于",
-    title: "在代码与好奇之间",
-    p1: "你好，我是安正植，网上叫 Zundal。我享受快速做出东西、再把它打磨成人们真正爱用的产品的过程。",
-    p2: "我主要做 Web，用 React 和 TypeScript，并相信交互与细节会改变体验。遇到新工具，我会先做点小东西试试。",
+    title: "从基础设施底层到 AI 层",
+    p1: "你好，我是安正植，网上叫 Zundal。我是一名拥有 7 年经验的后端与 AX 工程师，目前在 KB 资产管理的 AI 技术团队，把业务需求落地为真正的 AI 功能。",
+    p2: "我从处理高并发流量、运维大规模云基础设施起步；如今用多个 LLM 与基于 MCP、事件驱动的架构来设计公司内部的 AI 智能体生态。我纵观从系统底层到 AI 应用层的整体架构，专注于用可维护的代码证明业务价值。",
     facts: [
-      { k: "根基", v: "React · TypeScript" },
-      { k: "兴趣", v: "交互 · 3D · 工具" },
-      { k: "方式", v: "先发布，再打磨" },
-      { k: "位置", v: "在线任何地方" },
+      { k: "现在", v: "KB 资产管理 · AI 技术 负责人" },
+      { k: "经验", v: "后端 · AX · 7 年" },
+      { k: "领域", v: "金融 · 云 · AI" },
+      { k: "主力", v: "Spring · Python · LLM · MCP" },
+      { k: "语言", v: "韩语 · 日语 (JLPT N1) · English" },
     ],
+  },
+  experience: {
+    eyebrow: "经历",
+    title: "走过的地方",
+    subtitle: "横跨多个领域、从基础设施到 AI 的七年。",
+    present: "至今",
+    items: {
+      kbam: {
+        company: "KB 资产管理",
+        role: "AI 技术团队 · 负责人",
+        period: "2025.02 — 至今",
+        summary:
+          "主导公司的 AX（AI Transformation）。通过 MCP 将多个 LLM（Upstage、Gemini、Claude）与内部系统打通，用 n8n、Airflow 自动化数据管道，并基于 Python、Celery 构建大规模金融时序数据的写入与监控系统。",
+      },
+      okestro: {
+        company: "Okestro",
+        role: "云平台研发",
+        period: "2023.07 — 2025.02",
+        summary:
+          "主导金融与公共领域大规模云平台的实时数据处理后端。基于 Kafka、Spring Reactive 构建非阻塞通知系统，为韩亚银行、新韩银行做云资源计量，并用 Vault、Keycloak 搭建统一认证。",
+      },
+      retail: {
+        company: "Retail&Insight · Monthly Kitchen",
+        role: "后端 · O2O / 电商",
+        period: "2021.11 — 2023.07",
+        summary:
+          "将 O2O 与电商平台迁移到 MSA 并解决瓶颈。强化支付与广告逻辑，提前引入 TypeScript 保障类型安全，引入 RabbitMQ、Redis 做分布式处理，并落地基于 Jest 的 TDD。",
+      },
+      wayne: {
+        company: "Wayne Technology",
+        role: "全栈 · 数据",
+        period: "2019.12 — 2021.10",
+        summary:
+          "用多线程并行处理，把原本超过 8 小时的大规模账本与图像迁移压缩到 1 小时以内。基于 Spring、WebSocket 推出实时征信信息传输 API 与贷款审核平台。",
+      },
+    },
   },
   projects: {
     eyebrow: "项目",
-    title: "做过的东西",
-    subtitle: "我从构思到实现、独立完成的网站与实验。",
+    title: "亲手做的东西",
+    subtitle: "与本职工作无关、我自己构思并上线运营的副业项目。",
     visit: "访问网站",
     items: {
       tabemono: {
         name: "Tabemono",
-        desc: "记录并回顾饮食的美食日记。轻盈而愉快的日常记录工具。",
+        desc: "以一顿饭连接人与人的社交餐饮平台。从构思到开发、上线都由我独立完成的全周期项目。",
       },
       novelNote: {
         name: "Novel Note",
-        desc: "为读与写的人准备的笔记。一个安静地收集思绪与文字的空间。",
+        desc: "为读与写的人准备的网页记录与笔记服务。一个安静地收集思绪与文字的空间。",
       },
       mafia: {
         name: "Mafia",

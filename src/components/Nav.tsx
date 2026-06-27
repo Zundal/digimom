@@ -4,7 +4,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SITE } from "../config/site";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-const SECTIONS = ["about", "projects", "writing", "connect"] as const;
+const SECTIONS = [
+  "about",
+  "experience",
+  "projects",
+  "writing",
+  "connect",
+] as const;
 
 export default function Nav() {
   const { t } = useTranslation();

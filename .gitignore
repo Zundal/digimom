@@ -40,3 +40,8 @@ pnpm-debug.log*
 /playwright-report
 /blob-report
 .cache
+
+# private docs & build artifacts (never publish)
+*.pdf
+*.tsbuildinfo
+.shot

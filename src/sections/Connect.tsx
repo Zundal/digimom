@@ -21,7 +21,7 @@ export default function Connect() {
   return (
     <section id="connect" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
       <SectionHeading
-        index="04"
+        index="05"
         eyebrow={t("connect.eyebrow")}
         title={t("connect.title")}
         subtitle={t("connect.subtitle")}

@@ -3,45 +3,83 @@ import type { Dict } from "./ko";
 const en: Dict = {
   nav: {
     about: "About",
+    experience: "Experience",
     projects: "Projects",
     writing: "Writing",
     connect: "Connect",
   },
   hero: {
-    eyebrow: "Developer · Maker · Writer",
+    eyebrow: "AX Engineer · Backend · 7 yrs",
     name: "Jeongsik An",
-    role: "I think by building",
+    role: "I connect business and AI",
     tagline:
-      "I like turning ideas into things you can actually touch on a screen — from small tools to playful experiences. I learn by making them myself.",
-    ctaProjects: "See the work",
+      "From learning to shipping. From the foundations of large-scale infrastructure up to the modern AI application layer, I turn business needs into systems that actually run.",
+    ctaProjects: "See experience",
     ctaContact: "Get in touch",
     scroll: "Scroll",
   },
   about: {
     eyebrow: "About",
-    title: "Somewhere between code and curiosity",
-    p1: "Hi, I'm Jeongsik An — Zundal online. I enjoy the loop of shipping something fast and then shaping it into a product people genuinely like to use.",
-    p2: "I work mostly on the web with React and TypeScript, and I believe interaction and detail are what change an experience. When a new tool catches my eye, I build something small with it first.",
+    title: "From the infra layer to the AI layer",
+    p1: "Hi, I'm Jeongsik An — Zundal online. I'm a backend & AX engineer with 7 years of experience, currently turning business requirements into real AI features on the AI Tech team at KB Asset Management.",
+    p2: "I started out handling high-traffic workloads and operating large-scale cloud infrastructure; today I design in-house AI agent ecosystems with multiple LLMs and MCP-driven, event-based architectures. I work across the whole stack — from the system's foundation to the AI application layer — and focus on proving business value through maintainable code.",
     facts: [
-      { k: "Foundation", v: "React · TypeScript" },
-      { k: "Drawn to", v: "Interaction · 3D · Tools" },
-      { k: "Approach", v: "Ship fast, then refine" },
-      { k: "Based", v: "Anywhere online" },
+      { k: "Now", v: "KB Asset Mgmt · AI Tech, Lead" },
+      { k: "Experience", v: "Backend · AX · 7 years" },
+      { k: "Domains", v: "Finance · Cloud · AI" },
+      { k: "Core", v: "Spring · Python · LLM · MCP" },
+      { k: "Languages", v: "Korean · Japanese (JLPT N1) · English" },
     ],
+  },
+  experience: {
+    eyebrow: "Experience",
+    title: "Where I've been",
+    subtitle: "Seven years spanning domains, from infrastructure to AI.",
+    present: "Present",
+    items: {
+      kbam: {
+        company: "KB Asset Management",
+        role: "AI Tech Team · Lead",
+        period: "Feb 2025 — Present",
+        summary:
+          "Leading the company's AX (AI Transformation). Connecting multiple LLMs (Upstage, Gemini, Claude) to internal systems via MCP, automating data pipelines with n8n and Airflow, and building large-scale financial time-series ingestion and monitoring on Python and Celery.",
+      },
+      okestro: {
+        company: "Okestro",
+        role: "Cloud Platform Engineering",
+        period: "Jul 2023 — Feb 2025",
+        summary:
+          "Led the real-time data backend for large-scale finance and public-sector cloud platforms. Built a non-blocking notification system on Kafka and Spring Reactive, cloud resource metering for Hana and Shinhan Bank, and unified auth with Vault and Keycloak.",
+      },
+      retail: {
+        company: "Retail&Insight · Monthly Kitchen",
+        role: "Backend · O2O / Commerce",
+        period: "Nov 2021 — Jul 2023",
+        summary:
+          "Migrated O2O and commerce platforms to MSA and resolved bottlenecks. Hardened payment and ad logic, adopted TypeScript early for type safety, introduced RabbitMQ/Redis for distributed processing, and established Jest-based TDD.",
+      },
+      wayne: {
+        company: "Wayne Technology",
+        role: "Full-stack · Data",
+        period: "Dec 2019 — Oct 2021",
+        summary:
+          "Cut large ledger and image migrations from over 8 hours to under 1 hour with multi-threaded parallel processing. Launched a real-time credit-info transfer API on Spring and WebSocket, plus a loan-screening platform.",
+      },
+    },
   },
   projects: {
     eyebrow: "Projects",
     title: "Things I've built",
-    subtitle: "Sites and experiments I designed and built end to end.",
+    subtitle: "Side projects I designed, shipped, and run — separate from my day job.",
     visit: "Visit site",
     items: {
       tabemono: {
         name: "Tabemono",
-        desc: "A food diary to log what you eat and look back on it. A light, joyful way to keep a daily record.",
+        desc: "A social dining platform that connects people over a meal. A full-cycle project I designed, built, and deployed myself.",
       },
       novelNote: {
         name: "Novel Note",
-        desc: "A note space for people who read and write — a quiet place to gather thoughts and sentences.",
+        desc: "A web note service for people who read and write — a quiet place to gather thoughts and sentences.",
       },
       mafia: {
         name: "Mafia",
@@ -92,8 +130,7 @@ const en: Dict = {
   connect: {
     eyebrow: "Connect",
     title: "Build together, or just say hi",
-    subtitle:
-      "Collaboration, feedback, or a casual hello — all welcome.",
+    subtitle: "Collaboration, feedback, or a casual hello — all welcome.",
     copy: "Copy email",
     copied: "Copied!",
   },

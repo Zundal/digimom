@@ -54,6 +54,15 @@ test.describe("Home", () => {
     expect(body).not.toMatch(/posts\.[a-zA-Z]/);
     expect(body).not.toMatch(/writing\.tags\./);
     expect(body).not.toMatch(/projects\.items\./);
+    expect(body).not.toMatch(/experience\.items\./);
+  });
+
+  test("renders the career timeline with current role", async ({ page }) => {
+    await page.goto("/");
+    const exp = page.locator("section#experience");
+    await expect(exp).toContainText("KB");
+    // Four positions in the timeline.
+    await expect(exp.getByRole("listitem")).toHaveCount(4);
   });
 });
 

@@ -17,7 +17,7 @@ export default function Writing() {
   return (
     <section id="writing" className="mx-auto max-w-6xl px-5 py-28 sm:px-8">
       <SectionHeading
-        index="03"
+        index="04"
         eyebrow={t("writing.eyebrow")}
         title={t("writing.title")}
         subtitle={t("writing.subtitle")}

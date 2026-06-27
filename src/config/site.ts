@@ -26,6 +26,39 @@ export const SOCIALS: Social[] = [
 ];
 
 // Projects / sites you've built. Copy is localized via i18n keys (projects.<id>.*).
+// Career timeline. Localized copy (company / role / period / summary) lives in
+// i18n under experience.items.<id>.
+export type Experience = {
+  id: string;
+  accent: "violet" | "aqua" | "pink";
+  stack: string[];
+  current?: boolean;
+};
+
+export const EXPERIENCE: Experience[] = [
+  {
+    id: "kbam",
+    accent: "violet",
+    stack: ["LLM", "MCP", "Airflow", "Python", "Celery"],
+    current: true,
+  },
+  {
+    id: "okestro",
+    accent: "aqua",
+    stack: ["Kafka", "Spring Reactive", "AWS", "Keycloak"],
+  },
+  {
+    id: "retail",
+    accent: "pink",
+    stack: ["MSA", "TypeScript", "RabbitMQ", "Redis"],
+  },
+  {
+    id: "wayne",
+    accent: "violet",
+    stack: ["Spring", "PHP", "PostgreSQL", "WebSocket"],
+  },
+];
+
 export type Project = {
   id: string;
   href: string;
