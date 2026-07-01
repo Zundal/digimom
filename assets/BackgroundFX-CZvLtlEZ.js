@@ -1,4 +1,4 @@
-import{u as p,j as a,r as l}from"./index-uHBt_fOz.js";import{C as v,B as x,a as u,b as d,u as h,A as g}from"./react-three-fiber.esm-B_HYbn-R.js";const S=`
+import{u as p,j as a,r as l}from"./index-DrXGUokN.js";import{C as v,B as x,a as u,b as d,u as h,A as g}from"./react-three-fiber.esm-BHFDkQhp.js";const S=`
 uniform float uTime;
 uniform float uMotion;
 attribute float aSeed;
