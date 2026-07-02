@@ -1,5 +1,5 @@
 import type { Dict } from "./ko";
-import { cheongyakJa } from "../posts/cheongyak";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
 
 const ja: Dict = {
   nav: {
@@ -103,7 +103,7 @@ const ja: Dict = {
     },
   },
   posts: {
-    cheongyak: cheongyakJa,
+    ...CHEONGYAK_POSTS.ja,
     sensation: {
       title: "世界はどのように私に届くのか — 第1部 感覚",
       excerpt:
@@ -182,6 +182,7 @@ const ja: Dict = {
     },
   },
   figures: {
+    ...CHEONGYAK_FIGURES.ja,
     sensesGateway: {
       title: "感覚の五つの関門",
       caption: "各器官は決まった刺激だけを受け取る。一つ選んでみてください。",

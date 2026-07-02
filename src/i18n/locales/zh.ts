@@ -1,5 +1,5 @@
 import type { Dict } from "./ko";
-import { cheongyakZh } from "../posts/cheongyak";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
 
 const zh: Dict = {
   nav: {
@@ -103,7 +103,7 @@ const zh: Dict = {
     },
   },
   posts: {
-    cheongyak: cheongyakZh,
+    ...CHEONGYAK_POSTS.zh,
     sensation: {
       title: "世界如何抵达我 — 第一部·感觉",
       excerpt:
@@ -179,6 +179,7 @@ const zh: Dict = {
     },
   },
   figures: {
+    ...CHEONGYAK_FIGURES.zh,
     sensesGateway: {
       title: "感觉的五道关口",
       caption: "每个器官只接收属于自己的刺激。挑一个看看。",

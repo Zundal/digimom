@@ -1,5 +1,5 @@
 import type { Dict } from "./ko";
-import { cheongyakEn } from "../posts/cheongyak";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
 
 const en: Dict = {
   nav: {
@@ -103,7 +103,7 @@ const en: Dict = {
     },
   },
   posts: {
-    cheongyak: cheongyakEn,
+    ...CHEONGYAK_POSTS.en,
     sensation: {
       title: "How the World Reaches Me — Part 1: Sensation",
       excerpt:
@@ -182,6 +182,7 @@ const en: Dict = {
     },
   },
   figures: {
+    ...CHEONGYAK_FIGURES.en,
     sensesGateway: {
       title: "The Five Gateways of Sensation",
       caption: "Each organ admits only its own stimulus. Pick one.",
