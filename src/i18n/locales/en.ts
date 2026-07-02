@@ -1,6 +1,5 @@
 import type { Dict } from "./ko";
-import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES, CHEONGYAK_WRITING } from "../posts/cheongyak";
-import { RECOVERED_POSTS, RECOVERED_WRITING } from "../posts/recovered-from-deploy";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
 
 const en: Dict = {
   nav: {
@@ -95,25 +94,15 @@ const en: Dict = {
     subtitle: "What I learn while building, and the notes along the way.",
     readMore: "Keep reading",
     min: "min",
-    all: RECOVERED_WRITING.en.all,
-    searchPlaceholder: RECOVERED_WRITING.en.searchPlaceholder,
-    empty: RECOVERED_WRITING.en.empty,
-    seriesCount: RECOVERED_WRITING.en.seriesCount,
-    series: {
-      ...RECOVERED_WRITING.en.series,
-      ...CHEONGYAK_WRITING.en.series,
-    },
     tags: {
       intro: "Intro",
       craft: "Craft",
       process: "Process",
       mind: "Mind",
-      housing: RECOVERED_WRITING.en.tags.housing,
-      finance: RECOVERED_WRITING.en.tags.finance,
+      life: "Life",
     },
   },
   posts: {
-    ...RECOVERED_POSTS.en,
     ...CHEONGYAK_POSTS.en,
     sensation: {
       title: "How the World Reaches Me — Part 1: Sensation",

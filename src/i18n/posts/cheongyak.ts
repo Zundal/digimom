@@ -306,67 +306,32 @@ const cheongyakApplyZh = {
 
 export const CHEONGYAK_POSTS = {
   ko: {
-    cheongyak1: cheongyakBasicsKo,
-    cheongyak2: cheongyakPortalKo,
-    cheongyak3: cheongyakRankKo,
-    cheongyak4: cheongyakPointsKo,
-    cheongyak5: cheongyakApplyKo,
+    cheongyakBasics: cheongyakBasicsKo,
+    cheongyakPortal: cheongyakPortalKo,
+    cheongyakRank: cheongyakRankKo,
+    cheongyakPoints: cheongyakPointsKo,
+    cheongyakApply: cheongyakApplyKo,
   },
   en: {
-    cheongyak1: cheongyakBasicsEn,
-    cheongyak2: cheongyakPortalEn,
-    cheongyak3: cheongyakRankEn,
-    cheongyak4: cheongyakPointsEn,
-    cheongyak5: cheongyakApplyEn,
+    cheongyakBasics: cheongyakBasicsEn,
+    cheongyakPortal: cheongyakPortalEn,
+    cheongyakRank: cheongyakRankEn,
+    cheongyakPoints: cheongyakPointsEn,
+    cheongyakApply: cheongyakApplyEn,
   },
   ja: {
-    cheongyak1: cheongyakBasicsJa,
-    cheongyak2: cheongyakPortalJa,
-    cheongyak3: cheongyakRankJa,
-    cheongyak4: cheongyakPointsJa,
-    cheongyak5: cheongyakApplyJa,
+    cheongyakBasics: cheongyakBasicsJa,
+    cheongyakPortal: cheongyakPortalJa,
+    cheongyakRank: cheongyakRankJa,
+    cheongyakPoints: cheongyakPointsJa,
+    cheongyakApply: cheongyakApplyJa,
   },
   zh: {
-    cheongyak1: cheongyakBasicsZh,
-    cheongyak2: cheongyakPortalZh,
-    cheongyak3: cheongyakRankZh,
-    cheongyak4: cheongyakPointsZh,
-    cheongyak5: cheongyakApplyZh,
-  },
-};
-
-export const CHEONGYAK_WRITING = {
-  ko: {
-    series: {
-      cheongyak: {
-        title: "아파트 청약",
-        desc: "청약통장부터 가점 계산, 실전 신청까지.",
-      },
-    },
-  },
-  en: {
-    series: {
-      cheongyak: {
-        title: "Apartment cheongyak",
-        desc: "From savings account to points and applying.",
-      },
-    },
-  },
-  ja: {
-    series: {
-      cheongyak: {
-        title: "マンション申込",
-        desc: "口座開設から点数計算、実践申込まで。",
-      },
-    },
-  },
-  zh: {
-    series: {
-      cheongyak: {
-        title: "公寓申购",
-        desc: "从开户到分数计算与实战申请。",
-      },
-    },
+    cheongyakBasics: cheongyakBasicsZh,
+    cheongyakPortal: cheongyakPortalZh,
+    cheongyakRank: cheongyakRankZh,
+    cheongyakPoints: cheongyakPointsZh,
+    cheongyakApply: cheongyakApplyZh,
   },
 };
 
