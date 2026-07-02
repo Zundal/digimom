@@ -1,5 +1,6 @@
 import type { Dict } from "./ko";
-import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES, CHEONGYAK_WRITING } from "../posts/cheongyak";
+import { RECOVERED_POSTS, RECOVERED_WRITING } from "../posts/recovered-from-deploy";
 
 const ja: Dict = {
   nav: {
@@ -94,15 +95,25 @@ const ja: Dict = {
     subtitle: "作りながら学んだこと、その過程のメモ。",
     readMore: "続きを読む",
     min: "分",
+    all: RECOVERED_WRITING.ja.all,
+    searchPlaceholder: RECOVERED_WRITING.ja.searchPlaceholder,
+    empty: RECOVERED_WRITING.ja.empty,
+    seriesCount: RECOVERED_WRITING.ja.seriesCount,
+    series: {
+      ...RECOVERED_WRITING.ja.series,
+      ...CHEONGYAK_WRITING.ja.series,
+    },
     tags: {
       intro: "紹介",
       craft: "つくる",
       process: "プロセス",
       mind: "こころ",
-      life: "生活",
+      housing: RECOVERED_WRITING.ja.tags.housing,
+      finance: RECOVERED_WRITING.ja.tags.finance,
     },
   },
   posts: {
+    ...RECOVERED_POSTS.ja,
     ...CHEONGYAK_POSTS.ja,
     sensation: {
       title: "世界はどのように私に届くのか — 第1部 感覚",

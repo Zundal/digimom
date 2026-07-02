@@ -1,4 +1,5 @@
-import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES, CHEONGYAK_WRITING } from "../posts/cheongyak";
+import { RECOVERED_POSTS, RECOVERED_WRITING } from "../posts/recovered-from-deploy";
 
 const ko = {
   nav: {
@@ -93,15 +94,25 @@ const ko = {
     subtitle: "만들면서 배운 것, 그리고 그 과정에서의 메모들.",
     readMore: "이어 읽기",
     min: "분",
+    all: RECOVERED_WRITING.ko.all,
+    searchPlaceholder: RECOVERED_WRITING.ko.searchPlaceholder,
+    empty: RECOVERED_WRITING.ko.empty,
+    seriesCount: RECOVERED_WRITING.ko.seriesCount,
+    series: {
+      ...RECOVERED_WRITING.ko.series,
+      ...CHEONGYAK_WRITING.ko.series,
+    },
     tags: {
       intro: "소개",
       craft: "만들기",
       process: "과정",
       mind: "마음",
-      life: "생활",
+      housing: RECOVERED_WRITING.ko.tags.housing,
+      finance: RECOVERED_WRITING.ko.tags.finance,
     },
   },
   posts: {
+    ...RECOVERED_POSTS.ko,
     ...CHEONGYAK_POSTS.ko,
     sensation: {
       title: "세계는 어떻게 나에게 도착하는가 — 1부. 감각",
