@@ -1,4 +1,5 @@
 import type { Dict } from "./ko";
+import { cheongyakEn } from "../posts/cheongyak";
 
 const en: Dict = {
   nav: {
@@ -93,9 +94,16 @@ const en: Dict = {
     subtitle: "What I learn while building, and the notes along the way.",
     readMore: "Keep reading",
     min: "min",
-    tags: { intro: "Intro", craft: "Craft", process: "Process", mind: "Mind" },
+    tags: {
+      intro: "Intro",
+      craft: "Craft",
+      process: "Process",
+      mind: "Mind",
+      life: "Life",
+    },
   },
   posts: {
+    cheongyak: cheongyakEn,
     sensation: {
       title: "How the World Reaches Me — Part 1: Sensation",
       excerpt:

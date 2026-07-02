@@ -1,4 +1,5 @@
 import type { Dict } from "./ko";
+import { cheongyakJa } from "../posts/cheongyak";
 
 const ja: Dict = {
   nav: {
@@ -93,9 +94,16 @@ const ja: Dict = {
     subtitle: "作りながら学んだこと、その過程のメモ。",
     readMore: "続きを読む",
     min: "分",
-    tags: { intro: "紹介", craft: "つくる", process: "プロセス", mind: "こころ" },
+    tags: {
+      intro: "紹介",
+      craft: "つくる",
+      process: "プロセス",
+      mind: "こころ",
+      life: "生活",
+    },
   },
   posts: {
+    cheongyak: cheongyakJa,
     sensation: {
       title: "世界はどのように私に届くのか — 第1部 感覚",
       excerpt:

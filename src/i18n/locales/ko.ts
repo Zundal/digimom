@@ -1,3 +1,5 @@
+import { cheongyakKo } from "../posts/cheongyak";
+
 const ko = {
   nav: {
     about: "소개",
@@ -91,9 +93,16 @@ const ko = {
     subtitle: "만들면서 배운 것, 그리고 그 과정에서의 메모들.",
     readMore: "이어 읽기",
     min: "분",
-    tags: { intro: "소개", craft: "만들기", process: "과정", mind: "마음" },
+    tags: {
+      intro: "소개",
+      craft: "만들기",
+      process: "과정",
+      mind: "마음",
+      life: "생활",
+    },
   },
   posts: {
+    cheongyak: cheongyakKo,
     sensation: {
       title: "세계는 어떻게 나에게 도착하는가 — 1부. 감각",
       excerpt:

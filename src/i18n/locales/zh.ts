@@ -1,4 +1,5 @@
 import type { Dict } from "./ko";
+import { cheongyakZh } from "../posts/cheongyak";
 
 const zh: Dict = {
   nav: {
@@ -93,9 +94,16 @@ const zh: Dict = {
     subtitle: "做东西时学到的，以及一路上的笔记。",
     readMore: "继续阅读",
     min: "分钟",
-    tags: { intro: "introduction", craft: "制作", process: "过程", mind: "心智" },
+    tags: {
+      intro: "introduction",
+      craft: "制作",
+      process: "过程",
+      mind: "心智",
+      life: "生活",
+    },
   },
   posts: {
+    cheongyak: cheongyakZh,
     sensation: {
       title: "世界如何抵达我 — 第一部·感觉",
       excerpt:
