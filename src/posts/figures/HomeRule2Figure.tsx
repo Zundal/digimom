@@ -1,0 +1,87 @@
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import Frame from "./Frame";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
+
+type Step = { label: string; sub: string; final?: boolean };
+
+export default function HomeRule2Figure() {
+  const { t } = useTranslation();
+  const reduced = usePrefersReducedMotion();
+  const steps = t("figures.homeRule2.steps", {
+    returnObjects: true,
+  }) as Step[];
+
+  return (
+    <Frame
+      title={t("figures.homeRule2.title")}
+      caption={t("figures.homeRule2.caption")}
+      footer={t("figures.homeRule2.note")}
+    >
+      <ol className="flex flex-col gap-2.5 sm:flex-row sm:items-stretch sm:gap-1">
+        {steps.map((step, i) => {
+          const isFinal = !!step.final;
+          return (
+            <li
+              key={i}
+              className="flex items-center gap-2.5 sm:flex-1 sm:flex-col sm:gap-2"
+            >
+              <motion.div
+                className="relative flex h-full min-w-[3.25rem] flex-1 flex-col justify-center rounded-xl border px-3.5 py-3 sm:w-full"
+                style={{
+                  borderColor: isFinal
+                    ? "color-mix(in srgb, var(--color-aqua) 55%, var(--color-line))"
+                    : "var(--color-line)",
+                  background: isFinal
+                    ? "color-mix(in srgb, var(--color-aqua) 12%, transparent)"
+                    : "color-mix(in srgb, var(--color-surface) 85%, transparent)",
+                }}
+                animate={
+                  reduced || isFinal
+                    ? undefined
+                    : {
+                        borderColor: [
+                          "var(--color-line)",
+                          "color-mix(in srgb, var(--color-violet) 60%, var(--color-line))",
+                          "var(--color-line)",
+                        ],
+                      }
+                }
+                transition={{
+                  duration: 1.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.3,
+                }}
+              >
+                <span className="font-mono text-[0.6rem] text-faint">
+                  STEP {i + 1}
+                </span>
+                <span
+                  className="mt-0.5 text-sm font-semibold tracking-tight"
+                  style={{
+                    color: isFinal ? "var(--color-aqua)" : "var(--color-text)",
+                  }}
+                >
+                  {step.label}
+                </span>
+                <span className="mt-0.5 text-xs leading-snug text-muted">
+                  {step.sub}
+                </span>
+              </motion.div>
+
+              {i < steps.length - 1 && (
+                <span
+                  aria-hidden
+                  className="shrink-0 rotate-90 text-faint sm:rotate-0"
+                >
+                  →
+                </span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </Frame>
+  );
+}

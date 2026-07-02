@@ -306,32 +306,67 @@ const cheongyakApplyZh = {
 
 export const CHEONGYAK_POSTS = {
   ko: {
-    cheongyakBasics: cheongyakBasicsKo,
-    cheongyakPortal: cheongyakPortalKo,
-    cheongyakRank: cheongyakRankKo,
-    cheongyakPoints: cheongyakPointsKo,
-    cheongyakApply: cheongyakApplyKo,
+    cheongyak1: cheongyakBasicsKo,
+    cheongyak2: cheongyakPortalKo,
+    cheongyak3: cheongyakRankKo,
+    cheongyak4: cheongyakPointsKo,
+    cheongyak5: cheongyakApplyKo,
   },
   en: {
-    cheongyakBasics: cheongyakBasicsEn,
-    cheongyakPortal: cheongyakPortalEn,
-    cheongyakRank: cheongyakRankEn,
-    cheongyakPoints: cheongyakPointsEn,
-    cheongyakApply: cheongyakApplyEn,
+    cheongyak1: cheongyakBasicsEn,
+    cheongyak2: cheongyakPortalEn,
+    cheongyak3: cheongyakRankEn,
+    cheongyak4: cheongyakPointsEn,
+    cheongyak5: cheongyakApplyEn,
   },
   ja: {
-    cheongyakBasics: cheongyakBasicsJa,
-    cheongyakPortal: cheongyakPortalJa,
-    cheongyakRank: cheongyakRankJa,
-    cheongyakPoints: cheongyakPointsJa,
-    cheongyakApply: cheongyakApplyJa,
+    cheongyak1: cheongyakBasicsJa,
+    cheongyak2: cheongyakPortalJa,
+    cheongyak3: cheongyakRankJa,
+    cheongyak4: cheongyakPointsJa,
+    cheongyak5: cheongyakApplyJa,
   },
   zh: {
-    cheongyakBasics: cheongyakBasicsZh,
-    cheongyakPortal: cheongyakPortalZh,
-    cheongyakRank: cheongyakRankZh,
-    cheongyakPoints: cheongyakPointsZh,
-    cheongyakApply: cheongyakApplyZh,
+    cheongyak1: cheongyakBasicsZh,
+    cheongyak2: cheongyakPortalZh,
+    cheongyak3: cheongyakRankZh,
+    cheongyak4: cheongyakPointsZh,
+    cheongyak5: cheongyakApplyZh,
+  },
+};
+
+export const CHEONGYAK_WRITING = {
+  ko: {
+    series: {
+      cheongyak: {
+        title: "아파트 청약",
+        desc: "청약통장부터 가점 계산, 실전 신청까지.",
+      },
+    },
+  },
+  en: {
+    series: {
+      cheongyak: {
+        title: "Apartment cheongyak",
+        desc: "From savings account to points and applying.",
+      },
+    },
+  },
+  ja: {
+    series: {
+      cheongyak: {
+        title: "マンション申込",
+        desc: "口座開設から点数計算、実践申込まで。",
+      },
+    },
+  },
+  zh: {
+    series: {
+      cheongyak: {
+        title: "公寓申购",
+        desc: "从开户到分数计算与实战申请。",
+      },
+    },
   },
 };
 

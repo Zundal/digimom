@@ -1,5 +1,7 @@
 import type { Dict } from "./ko";
-import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES, CHEONGYAK_WRITING } from "../posts/cheongyak";
+import { RECOVERED_FIGURES } from "../posts/recovered-figures";
+import { RECOVERED_POSTS, RECOVERED_WRITING } from "../posts/recovered-from-deploy";
 
 const en: Dict = {
   nav: {
@@ -94,15 +96,25 @@ const en: Dict = {
     subtitle: "What I learn while building, and the notes along the way.",
     readMore: "Keep reading",
     min: "min",
+    all: RECOVERED_WRITING.en.all,
+    searchPlaceholder: RECOVERED_WRITING.en.searchPlaceholder,
+    empty: RECOVERED_WRITING.en.empty,
+    seriesCount: RECOVERED_WRITING.en.seriesCount,
+    series: {
+      ...RECOVERED_WRITING.en.series,
+      ...CHEONGYAK_WRITING.en.series,
+    },
     tags: {
       intro: "Intro",
       craft: "Craft",
       process: "Process",
       mind: "Mind",
-      life: "Life",
+      housing: RECOVERED_WRITING.en.tags.housing,
+      finance: RECOVERED_WRITING.en.tags.finance,
     },
   },
   posts: {
+    ...RECOVERED_POSTS.en,
     ...CHEONGYAK_POSTS.en,
     sensation: {
       title: "How the World Reaches Me — Part 1: Sensation",
@@ -183,6 +195,7 @@ const en: Dict = {
   },
   figures: {
     ...CHEONGYAK_FIGURES.en,
+    ...RECOVERED_FIGURES.en,
     sensesGateway: {
       title: "The Five Gateways of Sensation",
       caption: "Each organ admits only its own stimulus. Pick one.",

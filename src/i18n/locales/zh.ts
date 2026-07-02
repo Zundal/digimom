@@ -1,5 +1,7 @@
 import type { Dict } from "./ko";
-import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES, CHEONGYAK_WRITING } from "../posts/cheongyak";
+import { RECOVERED_FIGURES } from "../posts/recovered-figures";
+import { RECOVERED_POSTS, RECOVERED_WRITING } from "../posts/recovered-from-deploy";
 
 const zh: Dict = {
   nav: {
@@ -94,15 +96,25 @@ const zh: Dict = {
     subtitle: "做东西时学到的，以及一路上的笔记。",
     readMore: "继续阅读",
     min: "分钟",
+    all: RECOVERED_WRITING.zh.all,
+    searchPlaceholder: RECOVERED_WRITING.zh.searchPlaceholder,
+    empty: RECOVERED_WRITING.zh.empty,
+    seriesCount: RECOVERED_WRITING.zh.seriesCount,
+    series: {
+      ...RECOVERED_WRITING.zh.series,
+      ...CHEONGYAK_WRITING.zh.series,
+    },
     tags: {
       intro: "introduction",
       craft: "制作",
       process: "过程",
       mind: "心智",
-      life: "生活",
+      housing: RECOVERED_WRITING.zh.tags.housing,
+      finance: RECOVERED_WRITING.zh.tags.finance,
     },
   },
   posts: {
+    ...RECOVERED_POSTS.zh,
     ...CHEONGYAK_POSTS.zh,
     sensation: {
       title: "世界如何抵达我 — 第一部·感觉",
@@ -180,6 +192,7 @@ const zh: Dict = {
   },
   figures: {
     ...CHEONGYAK_FIGURES.zh,
+    ...RECOVERED_FIGURES.zh,
     sensesGateway: {
       title: "感觉的五道关口",
       caption: "每个器官只接收属于自己的刺激。挑一个看看。",
