@@ -1,4 +1,5 @@
 import type { Dict } from "./ko";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
 
 const en: Dict = {
   nav: {
@@ -93,9 +94,16 @@ const en: Dict = {
     subtitle: "What I learn while building, and the notes along the way.",
     readMore: "Keep reading",
     min: "min",
-    tags: { intro: "Intro", craft: "Craft", process: "Process", mind: "Mind" },
+    tags: {
+      intro: "Intro",
+      craft: "Craft",
+      process: "Process",
+      mind: "Mind",
+      life: "Life",
+    },
   },
   posts: {
+    ...CHEONGYAK_POSTS.en,
     sensation: {
       title: "How the World Reaches Me — Part 1: Sensation",
       excerpt:
@@ -174,6 +182,7 @@ const en: Dict = {
     },
   },
   figures: {
+    ...CHEONGYAK_FIGURES.en,
     sensesGateway: {
       title: "The Five Gateways of Sensation",
       caption: "Each organ admits only its own stimulus. Pick one.",

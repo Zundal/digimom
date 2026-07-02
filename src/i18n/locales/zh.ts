@@ -1,4 +1,5 @@
 import type { Dict } from "./ko";
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
 
 const zh: Dict = {
   nav: {
@@ -93,9 +94,16 @@ const zh: Dict = {
     subtitle: "做东西时学到的，以及一路上的笔记。",
     readMore: "继续阅读",
     min: "分钟",
-    tags: { intro: "introduction", craft: "制作", process: "过程", mind: "心智" },
+    tags: {
+      intro: "introduction",
+      craft: "制作",
+      process: "过程",
+      mind: "心智",
+      life: "生活",
+    },
   },
   posts: {
+    ...CHEONGYAK_POSTS.zh,
     sensation: {
       title: "世界如何抵达我 — 第一部·感觉",
       excerpt:
@@ -171,6 +179,7 @@ const zh: Dict = {
     },
   },
   figures: {
+    ...CHEONGYAK_FIGURES.zh,
     sensesGateway: {
       title: "感觉的五道关口",
       caption: "每个器官只接收属于自己的刺激。挑一个看看。",

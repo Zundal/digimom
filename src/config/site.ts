@@ -110,6 +110,11 @@ export type Post = {
 };
 
 export const POSTS: Post[] = [
+  { id: "cheongyakBasics", date: "2026-07-02", readingMin: 7, tag: "life" },
+  { id: "cheongyakPortal", date: "2026-07-02", readingMin: 7, tag: "life" },
+  { id: "cheongyakRank", date: "2026-07-02", readingMin: 7, tag: "life" },
+  { id: "cheongyakPoints", date: "2026-07-02", readingMin: 7, tag: "life" },
+  { id: "cheongyakApply", date: "2026-07-02", readingMin: 7, tag: "life" },
   { id: "cognition", date: "2026-06-28", readingMin: 7, tag: "mind" },
   { id: "perception", date: "2026-06-28", readingMin: 7, tag: "mind" },
   { id: "sensation", date: "2026-06-28", readingMin: 7, tag: "mind" },

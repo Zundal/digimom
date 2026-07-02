@@ -1,3 +1,5 @@
+import { CHEONGYAK_POSTS, CHEONGYAK_FIGURES } from "../posts/cheongyak";
+
 const ko = {
   nav: {
     about: "소개",
@@ -91,9 +93,16 @@ const ko = {
     subtitle: "만들면서 배운 것, 그리고 그 과정에서의 메모들.",
     readMore: "이어 읽기",
     min: "분",
-    tags: { intro: "소개", craft: "만들기", process: "과정", mind: "마음" },
+    tags: {
+      intro: "소개",
+      craft: "만들기",
+      process: "과정",
+      mind: "마음",
+      life: "생활",
+    },
   },
   posts: {
+    ...CHEONGYAK_POSTS.ko,
     sensation: {
       title: "세계는 어떻게 나에게 도착하는가 — 1부. 감각",
       excerpt:
@@ -172,6 +181,7 @@ const ko = {
     },
   },
   figures: {
+    ...CHEONGYAK_FIGURES.ko,
     sensesGateway: {
       title: "감각의 다섯 관문",
       caption: "각 기관은 정해진 자극만 받아들인다. 하나를 골라보세요.",
